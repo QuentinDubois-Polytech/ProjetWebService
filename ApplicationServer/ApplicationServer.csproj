@@ -48,7 +48,9 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationsClasses.cs" />
     <Compile Include="ClientJCDecauxAPI.cs" />
+    <Compile Include="ClientOpenStreetMapAPI.cs" />
     <Compile Include="IApplicationService.cs" />
     <Compile Include="JCDClasses.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
