@@ -13,6 +13,6 @@ namespace ApplicationServer
     {
         [OperationContract]
         // Méthode principale permettant de récupérer les directions entre deux points.
-        List<Itinerary> getDirections(Position depart, Position arrival);
+        Itinerary GetItinerary(Position origin, Position destination);
     }
 }
