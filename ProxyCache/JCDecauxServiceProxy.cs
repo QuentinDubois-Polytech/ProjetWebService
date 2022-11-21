@@ -7,40 +7,44 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Runtime.Caching;
+using System.Text.Json;
 
 namespace ProxyCache
 {
     // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom de classe "Service1" à la fois dans le code et le fichier de configuration.
-    public class JCDecauxSerivceProxy : IJCDecauxServiceProxy
+    public class JCDecauxServiceProxy : IJCDecauxServiceProxy
     {
         private readonly HttpClient client = new HttpClient();
         private static readonly string API_KEY = "4366cb72a2d1830a493e2cc4c6a3733a7a36583d";
         private static readonly double CACHE_DURATION = 5; //en minutes
 
-        public JCDecauxSerivceProxy()
+        public JCDecauxServiceProxy()
         {
            
         }
 
-        public string getContractsList()
+        public List<JCDContract> getContractsList()
         {
             string url = "https://api.jcdecaux.com/vls/v3/contracts";
             string query = "";
-            return getResponseFromCache(url, query);
+            string response = getResponseFromCache(url, query);
+            return JsonSerializer.Deserialize<List<JCDContract>>(response);
         }
 
-        public string getStationsList()
+        public List<JCDStation> getStationsList()
         {
             string url = "https://api.jcdecaux.com/vls/v3/stations";
             string query = "";
-            return getResponseFromCache(url, query);
+            string response = getResponseFromCache(url, query);
+            return JsonSerializer.Deserialize<List<JCDStation>>(response);
         }
 
-        public string getStationsListWithContractName(string contractName)
+        public  List<JCDStation> getStationsListWithContractName(string contractName)
         {
             string url = "https://api.jcdecaux.com/vls/v3/stations";
             string query = "contract=" + contractName;
-            return getResponseFromCache(url, query);
+            string response = getResponseFromCache(url, query);
+            return JsonSerializer.Deserialize<List<JCDStation>>(response);
         }
 
         private async Task<string> JCDecauxAPIGetCall(string url, string query)

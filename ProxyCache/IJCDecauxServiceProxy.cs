@@ -12,13 +12,13 @@ namespace ProxyCache
     public interface IJCDecauxServiceProxy
     {
         [OperationContract]
-        string getContractsList();
+        List<JCDContract> getContractsList();
 
         [OperationContract]
-        string getStationsList();
+        List<JCDStation> getStationsList();
 
         [OperationContract]
-        string getStationsListWithContractName(string contractName);
+        List<JCDStation> getStationsListWithContractName(string contractName);
 
     }
 }

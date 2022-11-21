@@ -10,7 +10,6 @@ using System.Text.Json;
 using System.Diagnostics.Contracts;
 using System.Device.Location;
 using ApplicationServer.JCDecauxServiceProxy;
-using ApplicationServer.ContractTypes;
 
 namespace ApplicationServer
 {
@@ -18,23 +17,6 @@ namespace ApplicationServer
     {
         private static readonly JCDecauxServiceProxyClient proxy = new JCDecauxServiceProxyClient();
 
-        private static List<JCDContract> retrieveContracts()
-        {
-            string response = proxy.getContractsList();
-            return JsonSerializer.Deserialize<List<JCDContract>>(response);
-        }
-
-        private static List<JCDStation> retrieveStations(string contractName)
-        {
-            string response = proxy.getStationsListWithContractName(contractName);
-            return JsonSerializer.Deserialize<List<JCDStation>>(response);
-        }
-
-        public static List<JCDStation> retrieveStations()
-        {
-            string response = proxy.getStationsList();
-            return JsonSerializer.Deserialize<List<JCDStation>>(response);
-        }
 
         public static JCDStation retrieveClosestStation(Position position, List<JCDStation> stations)
         {
@@ -59,14 +41,14 @@ namespace ApplicationServer
             return closestStation;
         }
 
-        public static JCDStation retrieveClosestStationDeparture(Position position, List<JCDStation> stations)
+        public static JCDStation retrieveClosestStationDeparture(Position position, string contractName)
         {
-            return retrieveClosestStation(position, retrieveStations().Where<JCDStation>(station => station.totalStands.availabilities.bikes != 0).ToList());
+            return retrieveClosestStation(position, proxy.getStationsListWithContractName(contractName).Where<JCDStation>(station => station.totalStands.availabilities.bikes != 0).ToList());
         }
 
-        public static JCDStation retrieveClosestStationArrival(Position position, List<JCDStation> stations)
+        public static JCDStation retrieveClosestStationArrival(Position position, string contractName)
         {
-            return retrieveClosestStation(position, retrieveStations().Where<JCDStation>(station => station.totalStands.availabilities.stands != 0).ToList());
+            return retrieveClosestStation(position, proxy.getStationsListWithContractName(contractName).Where<JCDStation>(station => station.totalStands.availabilities.stands != 0).ToList());
         }
     }
 }

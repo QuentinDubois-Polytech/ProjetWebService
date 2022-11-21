@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="28ae3558-8362-4fc3-97ee-44b4947c06cd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="6f330c2b-69f0-4525-b030-a232022f7f41" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,13 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxSerivce/" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxServiceProxy/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="555603ad-a366-4333-8e3d-9d7ae47c86b6" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxSerivce/?xsd=xsd1" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="1dce7ac6-0af4-4280-8f35-db730c4c9065" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxSerivce/?xsd=xsd0" />
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="a6d38005-f3de-47ee-b5db-fc83f81a4712" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxSerivce/?disco" />
-    <MetadataFile FileName="JCDecauxSerivceProxy.wsdl" MetadataType="Wsdl" ID="a747a3af-e74f-49c1-955d-eed38b6247a3" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxSerivce/?wsdl" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="50d7b06f-98d2-489d-9f82-c82f2bb39492" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxServiceProxy/?xsd=xsd2" />
+    <MetadataFile FileName="JCDecauxServiceProxy.wsdl" MetadataType="Wsdl" ID="1cd6fb53-c68d-49db-8aca-5333c56a1310" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxServiceProxy/?wsdl" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="940f40cf-5440-40c2-819e-da1e62491909" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxServiceProxy/?xsd=xsd1" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="39c332e5-05ee-40a2-b638-5c7da6dd9728" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxServiceProxy/?xsd=xsd0" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="1f573a17-f87c-48a3-96a6-32522b1d1abb" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxServiceProxy/?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
