@@ -9,35 +9,30 @@ using System.Security.Policy;
 using System.Text.Json;
 using System.Diagnostics.Contracts;
 using System.Device.Location;
+using ApplicationServer.JCDecauxServiceProxy;
+using ApplicationServer.ContractTypes;
 
 namespace ApplicationServer
 {
     public class ClientJCDecauxAPI
     {
-        private static readonly HttpClient client = new HttpClient();
-        private static readonly string API_KEY = "4366cb72a2d1830a493e2cc4c6a3733a7a36583d";
+        private static readonly JCDecauxServiceProxyClient proxy = new JCDecauxServiceProxyClient();
 
-        public static List<JCDContract> retrieveContracts()
+        private static List<JCDContract> retrieveContracts()
         {
-            string url = "https://api.jcdecaux.com/vls/v3/contracts";
-            string query = "";
-            string response = JCDecauxAPIGetCall(url, query).Result;
+            string response = proxy.getContractsList();
             return JsonSerializer.Deserialize<List<JCDContract>>(response);
         }
 
-        public static List<JCDStation> retrieveStations(string contractName)
+        private static List<JCDStation> retrieveStations(string contractName)
         {
-            string url = "https://api.jcdecaux.com/vls/v3/stations";
-            string query = "contract=" + contractName;
-            string response = JCDecauxAPIGetCall(url, query).Result;
+            string response = proxy.getStationsListWithContractName(contractName);
             return JsonSerializer.Deserialize<List<JCDStation>>(response);
         }
 
         public static List<JCDStation> retrieveStations()
         {
-            string url = "https://api.jcdecaux.com/vls/v3/stations";
-            string query = "";
-            string response = JCDecauxAPIGetCall(url, query).Result;
+            string response = proxy.getStationsList();
             return JsonSerializer.Deserialize<List<JCDStation>>(response);
         }
 
@@ -64,18 +59,14 @@ namespace ApplicationServer
             return closestStation;
         }
 
-        private static async Task<string> JCDecauxAPIGetCall(string url, string query)
+        public static JCDStation retrieveClosestStationDeparture(Position position, List<JCDStation> stations)
         {
-            HttpResponseMessage response = await client.GetAsync(url + "?" + query + "&apiKey=" + API_KEY);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsStringAsync();
+            return retrieveClosestStation(position, retrieveStations().Where<JCDStation>(station => station.totalStands.availabilities.bikes != 0).ToList());
         }
 
-        private static async Task<string> JCDecauxAPIPostCall(string url, HttpContent content)
+        public static JCDStation retrieveClosestStationArrival(Position position, List<JCDStation> stations)
         {
-            HttpResponseMessage response = await client.PostAsync(url + "?" + "apiKey=" + API_KEY, content);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsStringAsync();
+            return retrieveClosestStation(position, retrieveStations().Where<JCDStation>(station => station.totalStands.availabilities.stands != 0).ToList());
         }
     }
 }

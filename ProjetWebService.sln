@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationServer", "ApplicationServer\ApplicationServer.csproj", "{5A45D66F-514C-4F86-A70B-A25E9D567F93}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EA491E66-6E8F-4061-BEA9-BBAD1A7AECC6} = {EA491E66-6E8F-4061-BEA9-BBAD1A7AECC6}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyCache", "ProxyCache\ProxyCache.csproj", "{EA491E66-6E8F-4061-BEA9-BBAD1A7AECC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{5A45D66F-514C-4F86-A70B-A25E9D567F93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A45D66F-514C-4F86-A70B-A25E9D567F93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A45D66F-514C-4F86-A70B-A25E9D567F93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA491E66-6E8F-4061-BEA9-BBAD1A7AECC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA491E66-6E8F-4061-BEA9-BBAD1A7AECC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA491E66-6E8F-4061-BEA9-BBAD1A7AECC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA491E66-6E8F-4061-BEA9-BBAD1A7AECC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

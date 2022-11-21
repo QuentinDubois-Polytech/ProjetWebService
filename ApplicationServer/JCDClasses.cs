@@ -18,12 +18,36 @@ namespace ApplicationServer
 
         public string contractName { get; set; }
         public Position position { get; set; }
+
+        public Totalstands totalStands { get; set; }
     }
+
+
+    public class Totalstands
+    {
+        public Availabilities availabilities { get; set; }
+    }
+
+
+    public class Availabilities
+    {
+        public int bikes { get; set; }
+        public int stands { get; set; }
+    }
+
+
+
+
 
     public class Position
     {
         public double latitude { get; set; }
         public double longitude { get; set; }
     }
-
 }
+
+
+
+   
+   
+   
