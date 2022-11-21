@@ -57,6 +57,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="IApplicationService.cs" />
+    <Compile Include="OpenStreetMapClasses.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ApplicationService.cs" />
   </ItemGroup>
