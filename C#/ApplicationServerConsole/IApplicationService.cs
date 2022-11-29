@@ -4,9 +4,9 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using ApplicationServer.JCDecauxServiceProxy;
+using ApplicationServerConsole.JCDecauxServiceProxy;
 
-namespace ApplicationServer
+namespace ApplicationServerConsole
 {
     // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom d'interface "IService1" à la fois dans le code et le fichier de configuration.
     [ServiceContract]
@@ -14,6 +14,6 @@ namespace ApplicationServer
     {
         [OperationContract]
         // Méthode principale permettant de récupérer les directions entre deux points.
-        List<Itinerary> GetItinerary(string origin, string destination);
+        Itinerary GetItinerary(string origin, string destination);
     }
 }

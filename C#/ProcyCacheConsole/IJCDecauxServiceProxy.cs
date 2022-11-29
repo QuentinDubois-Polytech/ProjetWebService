@@ -4,16 +4,21 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using ApplicationServer.JCDecauxServiceProxy;
 
-namespace ApplicationServer
+namespace ProxyCacheConsole
 {
     // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom d'interface "IService1" à la fois dans le code et le fichier de configuration.
     [ServiceContract]
-    public interface IApplicationService
+    public interface IJCDecauxServiceProxy
     {
         [OperationContract]
-        // Méthode principale permettant de récupérer les directions entre deux points.
-        List<Itinerary> GetItinerary(string origin, string destination);
+        List<JCDContract> getContractsList();
+
+        [OperationContract]
+        List<JCDStation> getStationsList();
+
+        [OperationContract]
+        List<JCDStation> getStationsListWithContractName(string contractName);
+
     }
 }

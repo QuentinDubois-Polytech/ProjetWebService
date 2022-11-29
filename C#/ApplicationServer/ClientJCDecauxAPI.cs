@@ -41,14 +41,14 @@ namespace ApplicationServer
             return closestStation;
         }
 
-        public static JCDStation retrieveClosestStationDeparture(Position position, string contractName)
+        public static JCDStation retrieveClosestStationDeparture(Position position)
         {
-            return retrieveClosestStation(position, proxy.getStationsListWithContractName(contractName).Where<JCDStation>(station => station.totalStands.availabilities.bikes != 0).ToList());
+            return retrieveClosestStation(position, proxy.getStationsList().Where<JCDStation>(station => station.totalStands.availabilities.bikes != 0).ToList());
         }
 
-        public static JCDStation retrieveClosestStationArrival(Position position, string contractName)
+        public static JCDStation retrieveClosestStationArrival(Position position)
         {
-            return retrieveClosestStation(position, proxy.getStationsListWithContractName(contractName).Where<JCDStation>(station => station.totalStands.availabilities.stands != 0).ToList());
+            return retrieveClosestStation(position, proxy.getStationsList().Where<JCDStation>(station => station.totalStands.availabilities.stands != 0).ToList());
         }
     }
 }
