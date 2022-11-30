@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test2", "test2\test2.csproj", "{BBB9DA9C-ADC5-48E8-9726-718A0E1ECF12}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testWCFService", "test2\testWCFService.csproj", "{BBB9DA9C-ADC5-48E8-9726-718A0E1ECF12}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testconsole", "testconsole\testconsole.csproj", "{5939A580-630B-472C-8D3B-C1CC1EDE28C7}"
 EndProject
