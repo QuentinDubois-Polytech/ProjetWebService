@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test2", "test2\test2.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testconsole", "testconsole\testconsole.csproj", "{5939A580-630B-472C-8D3B-C1CC1EDE28C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationServerConsole", "ApplicationServerConsole\ApplicationServerConsole.csproj", "{77B54773-0EF9-4574-A8B5-4546DBBD8BF0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationServer", "ApplicationServerConsole\ApplicationServer.csproj", "{77B54773-0EF9-4574-A8B5-4546DBBD8BF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcyCacheConsole", "ProcyCacheConsole\ProcyCacheConsole.csproj", "{FAE7A2AA-224E-451A-9390-EB2B634E6B20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyCacheJCDecaux", "ProcyCacheConsole\ProxyCacheJCDecaux.csproj", "{FAE7A2AA-224E-451A-9390-EB2B634E6B20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

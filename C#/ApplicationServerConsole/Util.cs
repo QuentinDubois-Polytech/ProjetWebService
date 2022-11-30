@@ -12,11 +12,6 @@ namespace ApplicationServerConsole
 {
     public class Util
     {
-        public static string ToStringDouble(double d)
-        {
-            return d.ToString(CultureInfo.InvariantCulture);
-        }
-
         public static Itinerary calculateItinenary(List<OpenRouteDirection> oSMObjects)
         {
             oSMObjects.Select(o => o.metadata.query.profile);
@@ -37,6 +32,11 @@ namespace ApplicationServerConsole
         public static GeoCoordinate convertPositionToGeoCoordinate(Position p)
         {
             return new GeoCoordinate(p.latitude, p.longitude);
+        }
+
+        public static double calculateDuration(List<OpenRouteDirection> openRouteDirections)
+        {
+            return openRouteDirections.Select(o => o.features.First().properties.summary.duration).Sum();
         }
     }
 }

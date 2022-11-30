@@ -40,6 +40,7 @@ namespace ProxyCacheConsole
 
             Console.WriteLine("Service is host at " + DateTime.Now.ToString());
             Console.WriteLine("Host is running... Press <Enter> key to stop");
+            Console.WriteLine("Service Proxy JCDecaux");
             Console.ReadLine();
         }
     }

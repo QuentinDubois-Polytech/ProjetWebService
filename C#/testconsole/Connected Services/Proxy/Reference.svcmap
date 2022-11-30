@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="7bb72186-ecba-41a1-a266-3a20a2b0070a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxServiceProxy/" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="c9114df3-2283-4757-8018-bc1db2c889ff" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxServiceProxy/?xsd=xsd2" />
+    <MetadataFile FileName="JCDecauxServiceProxy.wsdl" MetadataType="Wsdl" ID="c97f935e-90d5-48c7-a91e-2b5a476f302c" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxServiceProxy/?wsdl" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="0b27623e-8209-48f7-b60c-f21abf34e025" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxServiceProxy/?xsd=xsd1" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="7e6038b9-e9bb-4457-a109-3e584009351d" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxServiceProxy/?xsd=xsd0" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="b2976826-e248-4bf6-bdd5-d82e213ca5ff" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxServiceProxy/?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

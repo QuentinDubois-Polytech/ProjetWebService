@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
 using ApplicationServerConsole.JCDecauxServiceProxy;
+using System.ServiceModel.Channels;
 
 namespace ApplicationServerConsole
 {
@@ -47,6 +48,7 @@ namespace ApplicationServerConsole
 
             Console.WriteLine("Service is host at " + DateTime.Now.ToString());
             Console.WriteLine("Host is running... Press <Enter> key to stop");
+            Console.WriteLine("Service ApplicationServer");
             Console.ReadLine();
         }
     }

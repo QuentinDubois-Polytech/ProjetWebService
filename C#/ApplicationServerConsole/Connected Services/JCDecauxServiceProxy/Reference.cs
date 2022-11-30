@@ -15,7 +15,7 @@ namespace ApplicationServerConsole.JCDecauxServiceProxy {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="JCDContract", Namespace="http://schemas.datacontract.org/2004/07/ProxyCache")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="JCDContract", Namespace="http://schemas.datacontract.org/2004/07/ProxyCacheConsole")]
     [System.SerializableAttribute()]
     public partial class JCDContract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -60,7 +60,7 @@ namespace ApplicationServerConsole.JCDecauxServiceProxy {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="JCDStation", Namespace="http://schemas.datacontract.org/2004/07/ProxyCache")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="JCDStation", Namespace="http://schemas.datacontract.org/2004/07/ProxyCacheConsole")]
     [System.SerializableAttribute()]
     public partial class JCDStation : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -169,7 +169,7 @@ namespace ApplicationServerConsole.JCDecauxServiceProxy {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Position", Namespace="http://schemas.datacontract.org/2004/07/ProxyCache")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Position", Namespace="http://schemas.datacontract.org/2004/07/ProxyCacheConsole")]
     [System.SerializableAttribute()]
     public partial class Position : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -230,7 +230,7 @@ namespace ApplicationServerConsole.JCDecauxServiceProxy {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Totalstands", Namespace="http://schemas.datacontract.org/2004/07/ProxyCache")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Totalstands", Namespace="http://schemas.datacontract.org/2004/07/ProxyCacheConsole")]
     [System.SerializableAttribute()]
     public partial class Totalstands : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -275,7 +275,7 @@ namespace ApplicationServerConsole.JCDecauxServiceProxy {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Availabilities", Namespace="http://schemas.datacontract.org/2004/07/ProxyCache")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Availabilities", Namespace="http://schemas.datacontract.org/2004/07/ProxyCacheConsole")]
     [System.SerializableAttribute()]
     public partial class Availabilities : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         

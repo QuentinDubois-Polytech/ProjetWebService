@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using testconsole.Proxy;
+using System.Text.Json;
 
 namespace testconsole
 {
@@ -11,8 +13,11 @@ namespace testconsole
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            double d = Double.Parse("52.8725945", System.Globalization.CultureInfo.InvariantCulture);
-            Console.WriteLine(d);
+            JCDecauxServiceProxyClient client = new JCDecauxServiceProxyClient();
+            client.getStationsList();
+            //Console.WriteLine(JsonSerializer.Serialize(client.getStationsList().Where(s => s.contractName == "lyon").ToList()));
+            Console.WriteLine("OK");
+            Console.ReadLine();
         }
     }
 }

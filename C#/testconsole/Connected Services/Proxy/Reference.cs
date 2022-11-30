@@ -8,14 +8,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace testconsole.ServiceReference1 {
+namespace testconsole.Proxy {
     using System.Runtime.Serialization;
     using System;
     
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="JCDContract", Namespace="http://schemas.datacontract.org/2004/07/ProxyCache")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="JCDContract", Namespace="http://schemas.datacontract.org/2004/07/ProxyCacheConsole")]
     [System.SerializableAttribute()]
     public partial class JCDContract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -60,7 +60,7 @@ namespace testconsole.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="JCDStation", Namespace="http://schemas.datacontract.org/2004/07/ProxyCache")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="JCDStation", Namespace="http://schemas.datacontract.org/2004/07/ProxyCacheConsole")]
     [System.SerializableAttribute()]
     public partial class JCDStation : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -77,10 +77,10 @@ namespace testconsole.ServiceReference1 {
         private int numberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private testconsole.ServiceReference1.Position positionField;
+        private testconsole.Proxy.Position positionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private testconsole.ServiceReference1.Totalstands totalStandsField;
+        private testconsole.Proxy.Totalstands totalStandsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -132,7 +132,7 @@ namespace testconsole.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public testconsole.ServiceReference1.Position position {
+        public testconsole.Proxy.Position position {
             get {
                 return this.positionField;
             }
@@ -145,7 +145,7 @@ namespace testconsole.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public testconsole.ServiceReference1.Totalstands totalStands {
+        public testconsole.Proxy.Totalstands totalStands {
             get {
                 return this.totalStandsField;
             }
@@ -169,7 +169,7 @@ namespace testconsole.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Position", Namespace="http://schemas.datacontract.org/2004/07/ProxyCache")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Position", Namespace="http://schemas.datacontract.org/2004/07/ProxyCacheConsole")]
     [System.SerializableAttribute()]
     public partial class Position : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -230,7 +230,7 @@ namespace testconsole.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Totalstands", Namespace="http://schemas.datacontract.org/2004/07/ProxyCache")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Totalstands", Namespace="http://schemas.datacontract.org/2004/07/ProxyCacheConsole")]
     [System.SerializableAttribute()]
     public partial class Totalstands : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -238,7 +238,7 @@ namespace testconsole.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private testconsole.ServiceReference1.Availabilities availabilitiesField;
+        private testconsole.Proxy.Availabilities availabilitiesField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -251,7 +251,7 @@ namespace testconsole.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public testconsole.ServiceReference1.Availabilities availabilities {
+        public testconsole.Proxy.Availabilities availabilities {
             get {
                 return this.availabilitiesField;
             }
@@ -275,7 +275,7 @@ namespace testconsole.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Availabilities", Namespace="http://schemas.datacontract.org/2004/07/ProxyCache")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Availabilities", Namespace="http://schemas.datacontract.org/2004/07/ProxyCacheConsole")]
     [System.SerializableAttribute()]
     public partial class Availabilities : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -335,35 +335,35 @@ namespace testconsole.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IJCDecauxServiceProxy")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Proxy.IJCDecauxServiceProxy")]
     public interface IJCDecauxServiceProxy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxServiceProxy/getContractsList", ReplyAction="http://tempuri.org/IJCDecauxServiceProxy/getContractsListResponse")]
-        testconsole.ServiceReference1.JCDContract[] getContractsList();
+        testconsole.Proxy.JCDContract[] getContractsList();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxServiceProxy/getContractsList", ReplyAction="http://tempuri.org/IJCDecauxServiceProxy/getContractsListResponse")]
-        System.Threading.Tasks.Task<testconsole.ServiceReference1.JCDContract[]> getContractsListAsync();
+        System.Threading.Tasks.Task<testconsole.Proxy.JCDContract[]> getContractsListAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxServiceProxy/getStationsList", ReplyAction="http://tempuri.org/IJCDecauxServiceProxy/getStationsListResponse")]
-        testconsole.ServiceReference1.JCDStation[] getStationsList();
+        testconsole.Proxy.JCDStation[] getStationsList();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxServiceProxy/getStationsList", ReplyAction="http://tempuri.org/IJCDecauxServiceProxy/getStationsListResponse")]
-        System.Threading.Tasks.Task<testconsole.ServiceReference1.JCDStation[]> getStationsListAsync();
+        System.Threading.Tasks.Task<testconsole.Proxy.JCDStation[]> getStationsListAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxServiceProxy/getStationsListWithContractName", ReplyAction="http://tempuri.org/IJCDecauxServiceProxy/getStationsListWithContractNameResponse")]
-        testconsole.ServiceReference1.JCDStation[] getStationsListWithContractName(string contractName);
+        testconsole.Proxy.JCDStation[] getStationsListWithContractName(string contractName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxServiceProxy/getStationsListWithContractName", ReplyAction="http://tempuri.org/IJCDecauxServiceProxy/getStationsListWithContractNameResponse")]
-        System.Threading.Tasks.Task<testconsole.ServiceReference1.JCDStation[]> getStationsListWithContractNameAsync(string contractName);
+        System.Threading.Tasks.Task<testconsole.Proxy.JCDStation[]> getStationsListWithContractNameAsync(string contractName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IJCDecauxServiceProxyChannel : testconsole.ServiceReference1.IJCDecauxServiceProxy, System.ServiceModel.IClientChannel {
+    public interface IJCDecauxServiceProxyChannel : testconsole.Proxy.IJCDecauxServiceProxy, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class JCDecauxServiceProxyClient : System.ServiceModel.ClientBase<testconsole.ServiceReference1.IJCDecauxServiceProxy>, testconsole.ServiceReference1.IJCDecauxServiceProxy {
+    public partial class JCDecauxServiceProxyClient : System.ServiceModel.ClientBase<testconsole.Proxy.IJCDecauxServiceProxy>, testconsole.Proxy.IJCDecauxServiceProxy {
         
         public JCDecauxServiceProxyClient() {
         }
@@ -384,27 +384,27 @@ namespace testconsole.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public testconsole.ServiceReference1.JCDContract[] getContractsList() {
+        public testconsole.Proxy.JCDContract[] getContractsList() {
             return base.Channel.getContractsList();
         }
         
-        public System.Threading.Tasks.Task<testconsole.ServiceReference1.JCDContract[]> getContractsListAsync() {
+        public System.Threading.Tasks.Task<testconsole.Proxy.JCDContract[]> getContractsListAsync() {
             return base.Channel.getContractsListAsync();
         }
         
-        public testconsole.ServiceReference1.JCDStation[] getStationsList() {
+        public testconsole.Proxy.JCDStation[] getStationsList() {
             return base.Channel.getStationsList();
         }
         
-        public System.Threading.Tasks.Task<testconsole.ServiceReference1.JCDStation[]> getStationsListAsync() {
+        public System.Threading.Tasks.Task<testconsole.Proxy.JCDStation[]> getStationsListAsync() {
             return base.Channel.getStationsListAsync();
         }
         
-        public testconsole.ServiceReference1.JCDStation[] getStationsListWithContractName(string contractName) {
+        public testconsole.Proxy.JCDStation[] getStationsListWithContractName(string contractName) {
             return base.Channel.getStationsListWithContractName(contractName);
         }
         
-        public System.Threading.Tasks.Task<testconsole.ServiceReference1.JCDStation[]> getStationsListWithContractNameAsync(string contractName) {
+        public System.Threading.Tasks.Task<testconsole.Proxy.JCDStation[]> getStationsListWithContractNameAsync(string contractName) {
             return base.Channel.getStationsListWithContractNameAsync(contractName);
         }
     }

@@ -36,7 +36,6 @@ namespace ProxyCacheConsole
             string url = "https://api.jcdecaux.com/vls/v3/stations";
             string query = "";
             string response = getResponseFromCache(url, query);
-            Console.WriteLine(response);
             return JsonSerializer.Deserialize<List<JCDStation>>(response);
         }
 
