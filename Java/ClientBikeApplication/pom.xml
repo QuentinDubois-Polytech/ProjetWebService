@@ -9,9 +9,10 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <exec.mainClass>fr.unice.polytech.BikeProject</exec.mainClass>
     </properties>
 
     <dependencies>
@@ -19,6 +20,7 @@
             <groupId>jakarta.xml.ws</groupId>
             <artifactId>jakarta.xml.ws-api</artifactId>
             <version>4.0.0</version>
+            <type>pom</type>
         </dependency>
         <dependency>
             <groupId>com.sun.xml.ws</groupId>
@@ -38,17 +40,24 @@
                 <groupId>com.sun.xml.ws</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
                 <version>4.0.0</version>
+                <executions>
+                    <execution>
+                        <id>wsimport-from-jdk</id>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
                     <wsdlUrls>
                         <wsdlUrl>http://localhost:8733/Design_Time_Addresses/ApplicationServer/ApplicationService/?wsdl</wsdlUrl>
                     </wsdlUrls>
                     <keep>true</keep>
-                    <packageName>fr.unice.polytech.BikeProject.generated</packageName>
+                    <packageName>generated</packageName>
                     <sourceDestDir>src/main/java</sourceDestDir>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 
 </project>
