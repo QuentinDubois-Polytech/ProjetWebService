@@ -5,6 +5,7 @@ using System.ServiceModel.Description;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace ProxyCacheConsole
 {
@@ -15,6 +16,9 @@ namespace ProxyCacheConsole
             //Create a URI to serve as the base address
             //Be careful to run Visual Studio as Admistrator or to allow VS to open new port netsh command. 
             // Example : netsh http add urlacl url=http://+:80/MyUri user=DOMAIN\user
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
+            
             Uri httpUrl = new Uri("http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxServiceProxy/");
 
             //Create ServiceHost

@@ -16,8 +16,12 @@ namespace ApplicationServerConsole
 
         public Itinerary GetItinerary(string origin, string destination)
         {
-            GeoCoordinate originLocation = ClientOpenStreetMapAPI.GetLocation(origin).Result;
-            GeoCoordinate destinationLocation = ClientOpenStreetMapAPI.GetLocation(destination).Result;
+            
+            OpenRouteServiceSearch originSearch = ClientOpenStreetMapAPI.GetCoordonates(origin).Result;
+            GeoCoordinate originLocation = originSearch.GetCoordinate();
+
+            OpenRouteServiceSearch destinationSearch = ClientOpenStreetMapAPI.GetCoordonates(destination).Result;
+            GeoCoordinate destinationLocation = destinationSearch.GetCoordinate();
 
             JCDStation stationOrigin = ClientJCDecauxAPI.retrieveClosestStationDeparture(originLocation);
             JCDStation stationDestination = ClientJCDecauxAPI.retrieveClosestStationArrival(originLocation);
@@ -25,27 +29,27 @@ namespace ApplicationServerConsole
             GeoCoordinate stationOriginLocation = Util.convertPositionToGeoCoordinate(stationOrigin.position);
             GeoCoordinate stationDestinationLocation = Util.convertPositionToGeoCoordinate(stationDestination.position);
 
-            OpenRouteDirection walkOnly = ClientOpenStreetMapAPI.GetItineraryByBiking(originLocation, destinationLocation).Result;
-            OpenRouteDirection walkOriginToStation = ClientOpenStreetMapAPI.GetItineraryByWalking(originLocation, stationOriginLocation).Result;
+            OpenRouteServiceDirections walkOnly = ClientOpenStreetMapAPI.GetItineraryByBiking(originLocation, destinationLocation).Result;
+            OpenRouteServiceDirections walkOriginToStation = ClientOpenStreetMapAPI.GetItineraryByWalking(originLocation, stationOriginLocation).Result;
 
             if (walkOnly.getDuration() < walkOriginToStation.getDuration())
             {
-                return Util.calculateItinenary(new List<OpenRouteDirection>() { walkOnly });
+                return Util.calculateItinenary(new List<OpenRouteServiceDirections>() { walkOnly });
             }
             
-            OpenRouteDirection bikeStationToStation = ClientOpenStreetMapAPI.GetItineraryByBiking(stationOriginLocation, stationDestinationLocation).Result;
-            if (walkOnly.getDuration() < Util.calculateDuration(new List<OpenRouteDirection> { walkOriginToStation, bikeStationToStation }))
+            OpenRouteServiceDirections bikeStationToStation = ClientOpenStreetMapAPI.GetItineraryByBiking(stationOriginLocation, stationDestinationLocation).Result;
+            if (walkOnly.getDuration() < Util.calculateDuration(new List<OpenRouteServiceDirections> { walkOriginToStation, bikeStationToStation }))
             {
-                return Util.calculateItinenary(new List<OpenRouteDirection>() { walkOnly });
+                return Util.calculateItinenary(new List<OpenRouteServiceDirections>() { walkOnly });
             }
 
-            OpenRouteDirection walkStationToDestination = ClientOpenStreetMapAPI.GetItineraryByWalking(stationDestinationLocation, destinationLocation).Result;
-            if (walkOnly.getDuration() < Util.calculateDuration(new List<OpenRouteDirection> { walkOriginToStation, bikeStationToStation, walkStationToDestination }))
+            OpenRouteServiceDirections walkStationToDestination = ClientOpenStreetMapAPI.GetItineraryByWalking(stationDestinationLocation, destinationLocation).Result;
+            if (walkOnly.getDuration() < Util.calculateDuration(new List<OpenRouteServiceDirections> { walkOriginToStation, bikeStationToStation, walkStationToDestination }))
             {
-                return Util.calculateItinenary(new List<OpenRouteDirection>() { walkOnly });
+                return Util.calculateItinenary(new List<OpenRouteServiceDirections>() { walkOnly });
             }
             
-            return Util.calculateItinenary(new List<OpenRouteDirection> { walkOriginToStation, bikeStationToStation, walkStationToDestination});
+            return Util.calculateItinenary(new List<OpenRouteServiceDirections> { walkOriginToStation, bikeStationToStation, walkStationToDestination});
         }
     }
 }

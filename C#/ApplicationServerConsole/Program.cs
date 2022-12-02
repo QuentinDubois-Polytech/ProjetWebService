@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using ApplicationServerConsole.JCDecauxServiceProxy;
 using System.ServiceModel.Channels;
+using System.Globalization;
 
 namespace ApplicationServerConsole
 {
@@ -17,6 +18,10 @@ namespace ApplicationServerConsole
             //Create a URI to serve as the base address
             //Be careful to run Visual Studio as Admistrator or to allow VS to open new port netsh command. 
             // Example : netsh http add urlacl url=http://+:80/MyUri user=DOMAIN\user
+
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
+
             Uri httpUrl = new Uri("http://localhost:8733/Design_Time_Addresses/ApplicationServer/ApplicationService/");
 
             //Create ServiceHost

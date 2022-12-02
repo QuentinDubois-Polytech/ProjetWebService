@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using testconsole.Proxy;
 using System.Text.Json;
+using System.Globalization;
+using System.Threading;
 
 namespace testconsole
 {
@@ -13,9 +15,11 @@ namespace testconsole
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            JCDecauxServiceProxyClient client = new JCDecauxServiceProxyClient();
-            client.getStationsList();
-            //Console.WriteLine(JsonSerializer.Serialize(client.getStationsList().Where(s => s.contractName == "lyon").ToList()));
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
+            double[] test = { 1.1, 2.2 };
+            
+            Console.WriteLine("[" + string.Join(",", test) + "]");
             Console.WriteLine("OK");
             Console.ReadLine();
         }
