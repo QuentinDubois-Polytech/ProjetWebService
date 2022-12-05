@@ -23,6 +23,15 @@ namespace ApplicationServerConsole.JCDecauxServiceProxy {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] citiesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string commercial_nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string country_codeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string nameField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -32,6 +41,45 @@ namespace ApplicationServerConsole.JCDecauxServiceProxy {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] cities {
+            get {
+                return this.citiesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.citiesField, value) != true)) {
+                    this.citiesField = value;
+                    this.RaisePropertyChanged("cities");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string commercial_name {
+            get {
+                return this.commercial_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.commercial_nameField, value) != true)) {
+                    this.commercial_nameField = value;
+                    this.RaisePropertyChanged("commercial_name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string country_code {
+            get {
+                return this.country_codeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.country_codeField, value) != true)) {
+                    this.country_codeField = value;
+                    this.RaisePropertyChanged("country_code");
+                }
             }
         }
         

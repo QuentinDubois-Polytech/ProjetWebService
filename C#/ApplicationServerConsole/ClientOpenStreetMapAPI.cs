@@ -52,41 +52,23 @@ namespace ApplicationServerConsole
             return JsonSerializer.Deserialize<OpenRouteServiceSearch>(responseData);
         }
 
-        public static async Task<OpenRouteServiceDirections> GetItineraryByWalking(GeoCoordinate start, GeoCoordinate end) {
+        public static async Task<OpenRouteServiceDirection> GetItineraryByWalking(GeoCoordinate start, GeoCoordinate end) {
             return await GetItinerary(start, end, ClientOpenStreetMapAPI.Walking);
         }
 
-        public static async Task<OpenRouteServiceDirections> GetItineraryByBiking(GeoCoordinate start, GeoCoordinate end)
+        public static async Task<OpenRouteServiceDirection> GetItineraryByBiking(GeoCoordinate start, GeoCoordinate end)
         {
             return await GetItinerary(start, end, ClientOpenStreetMapAPI.Biking);
         }
 
-        
-        public static async Task<OpenRouteServiceDirections> GetItineraryGetVersion(GeoCoordinate start, GeoCoordinate end, string profile)
-        {
-            // OpenRouteService inverse l'ordre habituelle de la représentation d'une coordonnée (latitude, longitude)
-            string url = API_URL + "v2/directions/" + profile + "?api_key=" + API_KEY;
-            string query = "&start=" + start.Longitude.ToString(CultureInfo.InvariantCulture) + "," + start.Latitude.ToString(CultureInfo.InvariantCulture) + 
-                "&end=" + end.Longitude.ToString(CultureInfo.InvariantCulture) + "," + end.Latitude.ToString(CultureInfo.InvariantCulture) + "&size=1";
-            //Console.WriteLine($"Api call to OpenRouteService {url + query}");
-            //Console.ReadLine();
-            HttpResponseMessage response = await client.GetAsync(url + query);
-            response.EnsureSuccessStatusCode();
-            string responseData = await response.Content.ReadAsStringAsync();
-            //Console.ReadLine();
-            OpenRouteServiceDirections openRouteDirection = JsonSerializer.Deserialize<OpenRouteServiceDirections>(responseData);
-            return openRouteDirection;
-        }
-
-        public static async Task<OpenRouteServiceDirections> GetItinerary(GeoCoordinate start, GeoCoordinate end, string profile)
+        public static async Task<OpenRouteServiceDirection> GetItinerary(GeoCoordinate start, GeoCoordinate end, string profile)
         {
             // OpenRouteService inverse l'ordre habituelle de la représentation d'une coordonnée (latitude, longitude)
             string url = API_URL + "v2/directions/" + profile;
-            BodyRequestDirections body = new BodyRequestDirections(DefaultLanguage);
-            body.AddCoordinate(start);
-            body.AddCoordinate(end);
-            string responseData = await APIPostCall(url, JsonSerializer.Serialize<BodyRequestDirections>(body));
-            return JsonSerializer.Deserialize<OpenRouteServiceDirections>(responseData);
+            string query = "&start=" + start.Longitude.ToString(CultureInfo.InvariantCulture) + "," + start.Latitude.ToString(CultureInfo.InvariantCulture) +
+                "&end=" + end.Longitude.ToString(CultureInfo.InvariantCulture) + "," + end.Latitude.ToString(CultureInfo.InvariantCulture) + "&size=1";
+            string responseData = await APIGetCall(url, query);
+            return JsonSerializer.Deserialize<OpenRouteServiceDirection>(responseData);
         }
 
         private static async Task<string> APIPostCall(string url, string content)

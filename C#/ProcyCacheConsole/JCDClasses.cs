@@ -13,7 +13,16 @@ namespace ProxyCacheConsole
     {
         [DataMember]
         public string name { get; set; }
+        [DataMember]
+        public string commercial_name { get; set; }
+        [DataMember]
+        public string[] cities { get; set; }
+        [DataMember]
+        public string country_code { get; set; }
+
+
     }
+
 
     [DataContract]
     public class JCDStation
@@ -61,6 +70,6 @@ namespace ProxyCacheConsole
 
 
 
-   
-   
-   
+
+
+

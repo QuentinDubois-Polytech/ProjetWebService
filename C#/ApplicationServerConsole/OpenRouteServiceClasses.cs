@@ -12,15 +12,17 @@ using System.Globalization;
 namespace ApplicationServerConsole
 {
 
-    public class OpenRouteServiceDirections
+
+    public class OpenRouteServiceDirection
     {
-        public Route[] routes { get; set; }
+        public string type { get; set; }
+        public Feature[] features { get; set; }
         public float[] bbox { get; set; }
         public Metadata metadata { get; set; }
 
         public double getDuration()
         {
-            return routes[0].summary.duration;
+            return features[0].properties.summary.duration;
         }
     }
 
@@ -29,32 +31,37 @@ namespace ApplicationServerConsole
         public string attribution { get; set; }
         public string service { get; set; }
         public long timestamp { get; set; }
-        public QueryDirections query { get; set; }
-        public EngineDirections engine { get; set; }
+        public QueryDirection query { get; set; }
+        public EngineDirection engine { get; set; }
     }
 
-    public class QueryDirections
+    public class QueryDirection
     {
         public float[][] coordinates { get; set; }
         public string profile { get; set; }
         public string format { get; set; }
-        public string language { get; set; }
     }
 
-    public class EngineDirections
+    public class EngineDirection
     {
         public string version { get; set; }
         public DateTime build_date { get; set; }
         public DateTime graph_date { get; set; }
     }
 
-    public class Route
+    public class Feature
     {
-        public Summary summary { get; set; }
-        public Segment[] segments { get; set; }
         public float[] bbox { get; set; }
-        public string geometry { get; set; }
+        public string type { get; set; }
+        public Properties properties { get; set; }
+        public Geometry geometry { get; set; }
+    }
+
+    public class Properties
+    {
+        public Segment[] segments { get; set; }
         public int[] way_points { get; set; }
+        public Summary summary { get; set; }
     }
 
     public class Summary
@@ -78,9 +85,14 @@ namespace ApplicationServerConsole
         public string instruction { get; set; }
         public string name { get; set; }
         public int[] way_points { get; set; }
+        public int exit_number { get; set; }
     }
 
-
+    public class Geometry
+    {
+        public float[][] coordinates { get; set; }
+        public string type { get; set; }
+    }
 
     public class OpenRouteServiceSearch
     {
@@ -92,6 +104,11 @@ namespace ApplicationServerConsole
         public GeoCoordinate GetCoordinate()
         {
             return new GeoCoordinate(features[0].geometry.coordinates[1], features[0].geometry.coordinates[0]);
+        }
+
+        public string GetCity()
+        {
+            return features[0].properties.locality;
         }
     }
 

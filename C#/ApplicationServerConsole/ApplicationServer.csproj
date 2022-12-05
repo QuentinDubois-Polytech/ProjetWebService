@@ -57,6 +57,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Exceptions.cs" />
     <Compile Include="IApplicationService.cs" />
     <Compile Include="NominatimClasses.cs" />
     <Compile Include="OpenRouteServiceClasses.cs" />
@@ -79,6 +80,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\JCDecauxServiceProxy\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\JCDecauxServiceProxy\item3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\JCDecauxServiceProxy\JCDecauxServiceProxy.wsdl" />

@@ -12,18 +12,18 @@ namespace ApplicationServerConsole
 {
     public class Util
     {
-        public static Itinerary calculateItinenary(List<OpenRouteServiceDirections> oSMObjects)
+        public static Itinerary calculateItinenary(List<OpenRouteServiceDirection> oSMObjects)
         {
             oSMObjects.Select(o => o.metadata.query.profile);
             Itinerary itinerary = new Itinerary();
             Segment segment = new Segment();
-            foreach (OpenRouteServiceDirections obj in oSMObjects)
+            foreach (OpenRouteServiceDirection obj in oSMObjects)
             {
-                Segment seg = obj.routes[0].segments[0];
+                Segment seg = obj.features[0].properties.segments[0];
                 string profile = obj.metadata.query.profile;
                 itinerary.directions.Add(new Direction(seg, profile));
-                itinerary.distance += obj.routes[0].summary.distance;
-                itinerary.duration += obj.routes[0].summary.duration;
+                itinerary.distance += obj.features[0].properties.segments[0].distance;
+                itinerary.duration += obj.features[0].properties.segments[0].duration;
             }
 
             return itinerary;
@@ -34,9 +34,9 @@ namespace ApplicationServerConsole
             return new GeoCoordinate(p.latitude, p.longitude);
         }
 
-        public static double calculateDuration(List<OpenRouteServiceDirections> openRouteDirections)
+        public static double calculateDuration(List<OpenRouteServiceDirection> openRouteDirections)
         {
-            return openRouteDirections.Select(o => o.routes[0].summary.duration).Sum();
+            return openRouteDirections.Select(o => o.features[0].properties.summary.duration).Sum();
         }
     }
 }
