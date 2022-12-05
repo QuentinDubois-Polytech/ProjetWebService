@@ -472,3 +472,5 @@ fabric.properties
 /Java/ClientBikeApplication/.idea
 /Java/ClientBikeApplication/src/main/java/fr/unice/polytech/BikeProject/generated
 /Java/ClientBikeApplication/target/jaxws/stale
+/Java/ClientBikeApplication/src/main/java/fr/unice/polytech/BikeProject/Test.java
+/Java/ClientBikeApplication/ClientBikeApplication.iml
