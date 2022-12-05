@@ -28,14 +28,23 @@ namespace ApplicationServerConsole
         {
             isException = false;
             directions = new List<Direction>();
+            coordinates = new List<float[]>();
         }
+
+        [DataMember]
+        public List<float[]> coordinates { get; set; }
         
         public Itinerary(Exception exception)
         {
             isException = true;
             this.exception = exception.Message;
         }
-        
+
+        public Itinerary(List<float[]> coordinates)
+        {
+            this.coordinates = coordinates;
+        }
+
         [DataMember]
         public List<Direction> directions { get; set; }
 
