@@ -26,7 +26,14 @@ namespace ApplicationServerConsole
     {
         public Itinerary()
         {
+            isException = false;
             directions = new List<Direction>();
+        }
+        
+        public Itinerary(Exception exception)
+        {
+            isException = true;
+            this.exception = exception.Message;
         }
         
         [DataMember]
@@ -37,6 +44,12 @@ namespace ApplicationServerConsole
 
         [DataMember]
         public double duration { get; set; }
-        
+
+        [DataMember]
+        public bool isException { get; set; }
+
+        [DataMember]
+        public string exception { get; set; }
+
     }
 }

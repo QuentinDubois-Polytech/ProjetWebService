@@ -14,7 +14,6 @@ namespace ApplicationServerConsole
     {
         public static Itinerary calculateItinenary(List<OpenRouteServiceDirection> oSMObjects)
         {
-            oSMObjects.Select(o => o.metadata.query.profile);
             Itinerary itinerary = new Itinerary();
             Segment segment = new Segment();
             foreach (OpenRouteServiceDirection obj in oSMObjects)

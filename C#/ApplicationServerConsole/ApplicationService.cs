@@ -16,15 +16,59 @@ namespace ApplicationServerConsole
 
         public Itinerary GetItinerary(string origin, string destination)
         {
-            
-            OpenRouteServiceSearch originSearch = ClientOpenStreetMapAPI.GetCoordonates(origin).Result;
+
+            Console.WriteLine("1");
+            OpenRouteServiceSearch originSearch = null;
+            try
+            {
+                originSearch = ClientOpenStreetMapAPI.GetCoordonates(origin).Result;
+            }
+            catch (LocationNotFound e)
+            {
+                return new Itinerary(e);
+            }
+
+            Console.WriteLine("2");
             GeoCoordinate originLocation = originSearch.GetCoordinate();
             string city = originSearch.GetCity();
 
-            OpenRouteServiceSearch destinationSearch = ClientOpenStreetMapAPI.GetCoordonates(destination).Result;
+            Console.WriteLine("3");
+            OpenRouteServiceSearch destinationSearch = null;
+            try
+            {
+                destinationSearch = ClientOpenStreetMapAPI.GetCoordonates(destination).Result;
+            }
+            catch (LocationNotFound e)
+            {
+                return new Itinerary(e);
+            }
+
+            Console.WriteLine("4");
             GeoCoordinate destinationLocation = destinationSearch.GetCoordinate();
 
-            JCDStation[] stations = ClientJCDecauxAPI.retrieveStations(originSearch, destinationSearch);
+            Console.WriteLine("5");
+            JCDStation[] stations = null;
+            try
+            {
+                stations = ClientJCDecauxAPI.retrieveStations(originSearch, destinationSearch);
+            }
+            catch (JCDContractNotFoundException e)
+            {
+                Console.WriteLine("ici1");
+                return new Itinerary(e);
+            }
+            catch (JCDContractsOfArrivalAndDepartureAreDifferents e)
+            {
+                Console.WriteLine("ici2");
+                return new Itinerary(e);
+            }
+            catch (JCDStationNotFound e)
+            {
+                Console.WriteLine("ici3");
+                return new Itinerary(e);
+            }
+
+            Console.WriteLine("6");
             JCDStation stationOrigin = stations[0];
             JCDStation stationDestination = stations[1];
 

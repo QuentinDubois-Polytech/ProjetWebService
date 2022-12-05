@@ -66,6 +66,7 @@ public class ObjectFactory {
     private final static QName _DirectionProfile_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServerConsole", "profile");
     private final static QName _DirectionSegment_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServerConsole", "segment");
     private final static QName _ItineraryDirections_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServerConsole", "directions");
+    private final static QName _ItineraryException_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServerConsole", "exception");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: generated
@@ -638,6 +639,19 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServerConsole", name = "directions", scope = Itinerary.class)
     public JAXBElement<ArrayOfDirection> createItineraryDirections(ArrayOfDirection value) {
         return new JAXBElement<ArrayOfDirection>(_ItineraryDirections_QNAME, ArrayOfDirection.class, Itinerary.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServerConsole", name = "exception", scope = Itinerary.class)
+    public JAXBElement<String> createItineraryException(String value) {
+        return new JAXBElement<String>(_ItineraryException_QNAME, String.class, Itinerary.class, value);
     }
 
 }

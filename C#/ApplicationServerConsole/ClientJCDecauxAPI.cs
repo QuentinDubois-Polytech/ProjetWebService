@@ -72,7 +72,6 @@ namespace ApplicationServerConsole
                 }
             }
 
-            // Throw an Exception Notfound
             return null;
         }
 
@@ -82,9 +81,9 @@ namespace ApplicationServerConsole
             if (contractNameDeparture == null)
                 throw new JCDContractNotFoundException(origin.GetCity());
 
-            string contractNameArrival = getContractName(origin.GetCity());
+            string contractNameArrival = getContractName(destination.GetCity());
             if (contractNameDeparture == null)
-                throw new JCDContractNotFoundException(origin.GetCity());
+                throw new JCDContractNotFoundException(destination.GetCity());
 
             if (! contractNameDeparture.Equals(contractNameArrival))
             {
@@ -93,7 +92,19 @@ namespace ApplicationServerConsole
 
             JCDStation[] stations = proxy.getStationsListWithContractName(contractNameDeparture);
             JCDStation departureStation = retrieveClosestStationDeparture(origin.GetCoordinate(), stations);
+
+            if (departureStation == null)
+            {
+                throw new JCDStationNotFound(origin.GetCity(), JCDStationNotFound.DEPARTURE);
+            }
+            
             JCDStation arrivalStation = retrieveClosestStationArrival(destination.GetCoordinate(), stations);
+
+            if (arrivalStation == null)
+            {
+                throw new JCDStationNotFound(destination.GetCity(), JCDStationNotFound.ARRIVAL);
+            }
+            
             return new JCDStation[] { departureStation, arrivalStation };
         }
     }

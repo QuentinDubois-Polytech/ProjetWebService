@@ -21,6 +21,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *         &lt;element name="directions" type="{http://schemas.datacontract.org/2004/07/ApplicationServerConsole}ArrayOfDirection" minOccurs="0"/&gt;
  *         &lt;element name="distance" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
  *         &lt;element name="duration" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
+ *         &lt;element name="exception" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="isException" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -33,7 +35,9 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "Itinerary", propOrder = {
     "directions",
     "distance",
-    "duration"
+    "duration",
+    "exception",
+    "isException"
 })
 public class Itinerary {
 
@@ -41,6 +45,9 @@ public class Itinerary {
     protected JAXBElement<ArrayOfDirection> directions;
     protected Double distance;
     protected Double duration;
+    @XmlElementRef(name = "exception", namespace = "http://schemas.datacontract.org/2004/07/ApplicationServerConsole", type = JAXBElement.class, required = false)
+    protected JAXBElement<String> exception;
+    protected Boolean isException;
 
     /**
      * Obtient la valeur de la propriété directions.
@@ -112,6 +119,54 @@ public class Itinerary {
      */
     public void setDuration(Double value) {
         this.duration = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété exception.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public JAXBElement<String> getException() {
+        return exception;
+    }
+
+    /**
+     * Définit la valeur de la propriété exception.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public void setException(JAXBElement<String> value) {
+        this.exception = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété isException.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isIsException() {
+        return isException;
+    }
+
+    /**
+     * Définit la valeur de la propriété isException.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setIsException(Boolean value) {
+        this.isException = value;
     }
 
 }
