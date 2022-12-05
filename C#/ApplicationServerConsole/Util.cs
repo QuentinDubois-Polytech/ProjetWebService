@@ -24,6 +24,10 @@ namespace ApplicationServerConsole
                 itinerary.directions.Add(new Direction(seg, profile));
                 itinerary.distance += obj.features[0].properties.segments[0].distance;
                 itinerary.duration += obj.features[0].properties.segments[0].duration;
+                foreach(float[] coord in obj.features[0].geometry.coordinates)
+                {
+                    itinerary.coordinates.Add(coord);
+                }
             }
 
             return itinerary;

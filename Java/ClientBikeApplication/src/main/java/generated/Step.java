@@ -4,6 +4,7 @@ package generated;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -20,6 +21,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *       &lt;sequence&gt;
  *         &lt;element name="distance" type="{http://www.w3.org/2001/XMLSchema}float" minOccurs="0"/&gt;
  *         &lt;element name="duration" type="{http://www.w3.org/2001/XMLSchema}float" minOccurs="0"/&gt;
+ *         &lt;element name="exit_number" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="instruction" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
@@ -36,6 +38,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "Step", propOrder = {
     "distance",
     "duration",
+    "exitNumber",
     "instruction",
     "name",
     "type",
@@ -45,6 +48,8 @@ public class Step {
 
     protected Float distance;
     protected Float duration;
+    @XmlElement(name = "exit_number")
+    protected Integer exitNumber;
     @XmlElementRef(name = "instruction", namespace = "http://schemas.datacontract.org/2004/07/ApplicationServerConsole", type = JAXBElement.class, required = false)
     protected JAXBElement<String> instruction;
     @XmlElementRef(name = "name", namespace = "http://schemas.datacontract.org/2004/07/ApplicationServerConsole", type = JAXBElement.class, required = false)
@@ -99,6 +104,30 @@ public class Step {
      */
     public void setDuration(Float value) {
         this.duration = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété exitNumber.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getExitNumber() {
+        return exitNumber;
+    }
+
+    /**
+     * Définit la valeur de la propriété exitNumber.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setExitNumber(Integer value) {
+        this.exitNumber = value;
     }
 
     /**

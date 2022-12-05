@@ -27,7 +27,11 @@ namespace ApplicationServerConsole
         public Itinerary()
         {
             directions = new List<Direction>();
+            coordinates = new List<float[]>();
         }
+
+        [DataMember]
+        public List<float[]> coordinates { get; set; }
         
         [DataMember]
         public List<Direction> directions { get; set; }
