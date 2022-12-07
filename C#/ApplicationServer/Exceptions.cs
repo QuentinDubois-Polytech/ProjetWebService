@@ -4,7 +4,7 @@ namespace ApplicationServer
 {
     public class JCDContractNotFoundException: Exception
     {
-        public JCDContractNotFoundException(string cityName) : base("No contract was found for city: " + cityName)
+        public JCDContractNotFoundException(string cityName) : base("No contract was found for the city: " + cityName)
         {
         }
     }
@@ -27,5 +27,11 @@ namespace ApplicationServer
     public class LocationNotFound : Exception
     {
         public LocationNotFound(string location) : base("The location: " + location + " was not found") { }
+    }
+
+    public class ItineraryNotFound : Exception
+    {
+
+        public ItineraryNotFound(string departure, string arrival) : base("No itinerary was found between " + departure + " and " + arrival) { }
     }
 }

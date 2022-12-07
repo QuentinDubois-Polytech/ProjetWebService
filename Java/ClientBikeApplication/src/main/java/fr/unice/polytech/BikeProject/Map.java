@@ -16,12 +16,12 @@ import javax.swing.event.MouseInputListener;
 import java.util.*;
 
 public class Map {
-    private JXMapViewer mapViewer;
+    private final JXMapViewer mapViewer;
     private JFrame frame;
     private DefaultTileFactory tileFactory;
-    private List<GeoPosition> geoPosition = new ArrayList<>();
+    private final List<GeoPosition> geoPosition = new ArrayList<>();
     private RoutePainter routePainter;
-    private WaypointPainter<Waypoint> waypointPainter = new WaypointPainter<Waypoint>();
+    private final WaypointPainter<Waypoint> waypointPainter = new WaypointPainter<>();
     MouseInputListener mia;
 
     public Map(){
@@ -51,10 +51,10 @@ public class Map {
         routePainter = new RoutePainter(geoPosition);
 
         // Set the focus
-        mapViewer.zoomToBestFit(new HashSet<GeoPosition>(geoPosition), 0.7);
+        mapViewer.zoomToBestFit(new HashSet<>(geoPosition), 0.7);
 
         // Create waypoints from the geo-positions
-        Set<Waypoint> waypoints = new HashSet<Waypoint>(Arrays.asList(
+        Set<Waypoint> waypoints = new HashSet<>(Arrays.asList(
                 new DefaultWaypoint(geoPosition.get(0)),
                 new DefaultWaypoint(geoPosition.get(geoPosition.size()-1))));
 
@@ -64,10 +64,10 @@ public class Map {
 
     public void draw() {
         // Create a compound painter that uses both the route-painter and the waypoint-painter
-        List<Painter<JXMapViewer>> painters = new ArrayList<Painter<JXMapViewer>>();
+        List<Painter<JXMapViewer>> painters = new ArrayList<>();
         painters.add(routePainter);
         painters.add(waypointPainter);
-        CompoundPainter<JXMapViewer> painter = new CompoundPainter<JXMapViewer>(painters);
+        CompoundPainter<JXMapViewer> painter = new CompoundPainter<>(painters);
         mapViewer.setOverlayPainter(painter);
     }
 }

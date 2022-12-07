@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Device.Location;
+using System.Net.Http;
 
 namespace ApplicationServer
 {
@@ -49,7 +50,14 @@ namespace ApplicationServer
                 // JCDContractNotFoundException : No contract found in the departure or arrival cities
                 // JCDContractsOfArrivalAndDepartureAreDifferents : The cities are in differents contracts
                 // JCDStationNotFound : No station found in the contracts corresponding to the conditions
-                Itinerary res = new Itinerary(ClientOpenStreetMapAPI.GetItineraryByWalking(originLocation, destinationLocation).Result, ClientOpenStreetMapAPI.Walking);
+                Itinerary res;
+                try
+                {
+                    res = new Itinerary(ClientOpenStreetMapAPI.GetItineraryByWalking(originLocation, destinationLocation).Result, ClientOpenStreetMapAPI.Walking);
+                } catch (AggregateException)
+                {
+                    return new Itinerary(new ItineraryNotFound(origin, destination));
+                }
                 res.isException = true;
                 res.exception = e.Message;
                 return res;

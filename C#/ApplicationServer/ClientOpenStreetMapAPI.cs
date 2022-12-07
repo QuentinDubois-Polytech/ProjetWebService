@@ -25,10 +25,6 @@ namespace ApplicationServer
             client = new HttpClient();
             client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("MyBikeApplication", "1.0"));
             client.DefaultRequestHeaders.AcceptLanguage.Add(new StringWithQualityHeaderValue(DefaultLanguage));
-
-            // Permet de remettre la représentation textuelle des objets par défaut (notamment les double)
-            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
-            CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
         }
 
         // Using the Nominatim API (not used anymore)
@@ -66,8 +62,8 @@ namespace ApplicationServer
         {
             // OpenRouteService inverse l'ordre habituelle de la représentation d'une coordonnée (latitude, longitude)
             string url = API_URL + "v2/directions/" + profile + "/";
-            string query = "&start=" + start.Longitude.ToString() + "," + start.Latitude.ToString() +
-                "&end=" + end.Longitude.ToString() + "," + end.Latitude.ToString() + "&size=1";
+            string query = "&start=" + start.Longitude.ToString(CultureInfo.InvariantCulture) + "," + start.Latitude.ToString(CultureInfo.InvariantCulture) +
+                "&end=" + end.Longitude.ToString(CultureInfo.InvariantCulture) + "," + end.Latitude.ToString(CultureInfo.InvariantCulture) + "&size=1";
             string responseData = await APIGetCall(url, query);
             return JsonSerializer.Deserialize<OpenRouteServiceDirection>(responseData);
         }
