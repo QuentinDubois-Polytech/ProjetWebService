@@ -6,14 +6,23 @@ using System.Threading.Tasks;
 using System.ServiceModel;
 using System.Runtime.Serialization;
 
-namespace ProxyCache
+namespace ProxyCacheConsole
 {
     [DataContract]
     public class JCDContract
     {
         [DataMember]
         public string name { get; set; }
+        [DataMember]
+        public string commercial_name { get; set; }
+        [DataMember]
+        public string[] cities { get; set; }
+        [DataMember]
+        public string country_code { get; set; }
+
+
     }
+
 
     [DataContract]
     public class JCDStation
@@ -49,7 +58,6 @@ namespace ProxyCache
 
 
 
-
     [DataContract]
     public class Position
     {
@@ -62,6 +70,6 @@ namespace ProxyCache
 
 
 
-   
-   
-   
+
+
+

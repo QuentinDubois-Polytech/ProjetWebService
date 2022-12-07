@@ -19,7 +19,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="coordinates" type="{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfArrayOffloat" minOccurs="0"/&gt;
- *         &lt;element name="directions" type="{http://schemas.datacontract.org/2004/07/ApplicationServerConsole}ArrayOfDirection" minOccurs="0"/&gt;
+ *         &lt;element name="directions" type="{http://schemas.datacontract.org/2004/07/ApplicationServer}ArrayOfDirection" minOccurs="0"/&gt;
  *         &lt;element name="distance" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
  *         &lt;element name="duration" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
  *         &lt;element name="exception" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
@@ -43,13 +43,13 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 public class Itinerary {
 
-    @XmlElementRef(name = "coordinates", namespace = "http://schemas.datacontract.org/2004/07/ApplicationServerConsole", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "coordinates", namespace = "http://schemas.datacontract.org/2004/07/ApplicationServer", type = JAXBElement.class, required = false)
     protected JAXBElement<ArrayOfArrayOffloat> coordinates;
-    @XmlElementRef(name = "directions", namespace = "http://schemas.datacontract.org/2004/07/ApplicationServerConsole", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "directions", namespace = "http://schemas.datacontract.org/2004/07/ApplicationServer", type = JAXBElement.class, required = false)
     protected JAXBElement<ArrayOfDirection> directions;
     protected Double distance;
     protected Double duration;
-    @XmlElementRef(name = "exception", namespace = "http://schemas.datacontract.org/2004/07/ApplicationServerConsole", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "exception", namespace = "http://schemas.datacontract.org/2004/07/ApplicationServer", type = JAXBElement.class, required = false)
     protected JAXBElement<String> exception;
     protected Boolean isException;
 

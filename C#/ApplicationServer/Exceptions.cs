@@ -1,21 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ApplicationServerConsole
+namespace ApplicationServer
 {
     public class JCDContractNotFoundException: Exception
     {
         public JCDContractNotFoundException(string cityName) : base("No contract was found for city: " + cityName)
         {
-        }
-
-        public string getMessage()
-        {
-            return Message;
         }
     }
 

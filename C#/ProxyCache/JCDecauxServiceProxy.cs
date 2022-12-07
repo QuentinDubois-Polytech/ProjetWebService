@@ -9,74 +9,64 @@ using System.Net.Http;
 using System.Runtime.Caching;
 using System.Text.Json;
 
-namespace ProxyCache
+namespace ProxyCacheConsole
 {
-    // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom de classe "Service1" à la fois dans le code et le fichier de configuration.
     public class JCDecauxServiceProxy : IJCDecauxServiceProxy
     {
-        private readonly HttpClient client = new HttpClient();
+        private static readonly HttpClient client = new HttpClient();
+        private static DateTimeOffset defaultDateTimeOffset = ObjectCache.InfiniteAbsoluteExpiration;
         private static readonly string API_KEY = "4366cb72a2d1830a493e2cc4c6a3733a7a36583d";
-        private static readonly double CACHE_DURATION = 5; //en minutes
-
-        public JCDecauxServiceProxy()
-        {
-           
-        }
 
         public List<JCDContract> getContractsList()
         {
             string url = "https://api.jcdecaux.com/vls/v3/contracts";
             string query = "";
-            string response = getResponseFromCache(url, query);
-            return JsonSerializer.Deserialize<List<JCDContract>>(response);
+            return Get<List<JCDContract>>(url + "?" + query);
         }
 
         public List<JCDStation> getStationsList()
         {
             string url = "https://api.jcdecaux.com/vls/v3/stations";
             string query = "";
-            string response = getResponseFromCache(url, query);
-            return JsonSerializer.Deserialize<List<JCDStation>>(response);
+            return Get<List<JCDStation>>(url + "?" + query);
         }
 
-        public  List<JCDStation> getStationsListWithContractName(string contractName)
+        public List<JCDStation> getStationsListWithContractName(string contractName)
         {
             string url = "https://api.jcdecaux.com/vls/v3/stations";
             string query = "contract=" + contractName;
-            string response = getResponseFromCache(url, query);
-            return JsonSerializer.Deserialize<List<JCDStation>>(response);
+            return Get<List<JCDStation>>(url + "?" + query);
         }
 
-        private async Task<string> JCDecauxAPIGetCall(string url, string query)
+        private async Task<string> JCDecauxAPIGetCall(string urlAndQueries)
         {
-            HttpResponseMessage response = await client.GetAsync(url + "?" + query + "&apiKey=" + API_KEY);
+            HttpResponseMessage response = await client.GetAsync(urlAndQueries + "&apiKey=" + API_KEY);
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
-
-        private async Task<string> JCDecauxAPIPostCall(string url, HttpContent content)
-        {
-            HttpResponseMessage response = await client.PostAsync(url + "?" + "apiKey=" + API_KEY, content);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsStringAsync();
-        }
-
-        private string getResponseFromCache(string url, string query)
+        
+        public T Get<T>(string cacheItemName, DateTimeOffset dt)
         {
             ObjectCache cache = MemoryCache.Default;
-            string key = url + "?" + query;
-            string response = cache[key] as string;
-
+            T response = (T) cache[cacheItemName];
             if (response == null)
             {
                 CacheItemPolicy policy = new CacheItemPolicy();
-                policy.AbsoluteExpiration =
-                    DateTimeOffset.Now.AddMinutes(CACHE_DURATION);
-                response = JCDecauxAPIGetCall(url, query).Result;
-                cache.Set(key, response, policy);
-                
+                policy.AbsoluteExpiration = dt;
+                response = JsonSerializer.Deserialize<T>(JCDecauxAPIGetCall(cacheItemName).Result);
+                cache.Set(cacheItemName, response, policy);
             }
             return response;
+        }
+
+        public T Get<T>(string cacheItemName, double dt_seconds)
+        {
+            return Get<T>(cacheItemName, DateTimeOffset.Now.AddSeconds(dt_seconds));
+        }
+
+        public T Get<T>(string cacheItemName)
+        {
+            return Get<T>(cacheItemName, defaultDateTimeOffset);
         }
     }
 }

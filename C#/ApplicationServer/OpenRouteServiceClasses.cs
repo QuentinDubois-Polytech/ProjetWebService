@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ServiceModel;
-using System.Runtime.Serialization;
 using System.Device.Location;
-using static System.Net.Mime.MediaTypeNames;
-using System.Globalization;
 
-namespace ApplicationServerConsole
+namespace ApplicationServer
 {
 
 
@@ -23,6 +15,11 @@ namespace ApplicationServerConsole
         public double getDuration()
         {
             return features[0].properties.summary.duration;
+        }
+
+        public double getDistance()
+        {
+            return features[0].properties.summary.distance;
         }
     }
 
@@ -101,7 +98,7 @@ namespace ApplicationServerConsole
         public FeaturesSearch[] features { get; set; }
         public float[] bbox { get; set; }
 
-        public GeoCoordinate GetCoordinate()
+        public GeoCoordinate GetGeoCoordinate()
         {
             return new GeoCoordinate(features[0].geometry.coordinates[1], features[0].geometry.coordinates[0]);
         }
@@ -179,7 +176,6 @@ namespace ApplicationServerConsole
         public string housenumber { get; set; }
         public string street { get; set; }
         public string postalcode { get; set; }
-        public int confidence { get; set; }
         public string match_type { get; set; }
         public string accuracy { get; set; }
         public string country { get; set; }
@@ -202,22 +198,4 @@ namespace ApplicationServerConsole
         public string label { get; set; }
     }
 
-    public class BodyRequestDirections
-    {
-        public List<double[]> coordinates { get; set; }
-        public string language { get; set; }
-
-        public BodyRequestDirections() : this("fr") { }
-
-        public BodyRequestDirections(string language)
-        {
-            coordinates = new List<double[]>();
-            this.language = language;
-        }
-
-        public void AddCoordinate(GeoCoordinate geoCoordinate)
-        {
-            coordinates.Add(new double[2] { geoCoordinate.Longitude, geoCoordinate.Latitude });
-        }
-    }
 }

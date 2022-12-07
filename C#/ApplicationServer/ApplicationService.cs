@@ -1,48 +1,86 @@
-﻿using System;
+﻿using ApplicationServerConsole.JCDecauxServiceProxy;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
-using ApplicationServer.JCDecauxServiceProxy;
+using System.Device.Location;
 
 namespace ApplicationServer
 {
     // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom de classe "Service1" à la fois dans le code et le fichier de configuration.
     public class ApplicationService : IApplicationService
     {
-        private ClientJCDecauxAPI clientJCDecaux;
-        private ClientOpenStreetMapAPI clientOpenStreetMap;
 
-        public ApplicationService()
+        public Itinerary GetItinerary(string origin, string destination)
         {
-            clientJCDecaux = new ClientJCDecauxAPI();
-            clientOpenStreetMap = new ClientOpenStreetMapAPI();
-        }
-        public List<Itinerary> GetItinerary(string origin, string destination)
-        {
-            // need to convert the adresse of origin and distination in poistion with OpenStreetMap
 
-            //JCDStation stationOrigin = ClientJCDecauxAPI.retrieveClosestStationDeparture(origin, "nom de la ville de départ");
-            //JCDStation stationDestination = ClientJCDecauxAPI.retrieveClosestStationArrival(destination, "nom de la ville d'arivée");
+            OpenRouteServiceSearch originSearch = null;
+            try
+            {
 
-            // need to convert the position of origin and distination in adresse with OpenStreetMap
-            Position originLocation = clientOpenStreetMap.GetLocation(origin).Result;
-            Position destinationLocation = clientOpenStreetMap.GetLocation(destination).Result;
+                originSearch = ClientOpenStreetMapAPI.GetCoordonates(origin).Result;
+            }
+            catch (LocationNotFound e)
+            {
+                // Impossible to find the coordinates of the departure point
+                return new Itinerary(e);
+            }
 
-            JCDStation stationOrigin = ClientJCDecauxAPI.retrieveClosestStationDeparture(originLocation);
-            JCDStation stationDestination = ClientJCDecauxAPI.retrieveClosestStationArrival(originLocation);
+            GeoCoordinate originLocation = originSearch.GetGeoCoordinate();
 
-            // need to calculate the itinerary with JCDecaux API
-            Itinerary walk1 = clientOpenStreetMap.GetItinerary(originLocation, stationOrigin.position, false).Result;
-            Itinerary bike = clientOpenStreetMap.GetItinerary(stationOrigin.position, stationDestination.position, true).Result;
-            Itinerary walk2 = clientOpenStreetMap.GetItinerary(stationDestination.position, destinationLocation, false).Result;
+            OpenRouteServiceSearch destinationSearch = null;
+            try
+            {
+                destinationSearch = ClientOpenStreetMapAPI.GetCoordonates(destination).Result;
+            }
+            catch (LocationNotFound e)
+            {
+                // Impossible to find the coordinates of the arrival point
+                return new Itinerary(e);
+            }
+            
+            GeoCoordinate destinationLocation = destinationSearch.GetGeoCoordinate();
 
-            return new List<Itinerary> { walk1, bike, walk2 };
+            JCDStation[] stations = null;
+            try
+            {
+                stations = ClientJCDecauxAPI.retrieveStations(originSearch, destinationSearch);
+            }
+            catch (Exception e) when (e is JCDContractNotFoundException || e is JCDContractsOfArrivalAndDepartureAreDifferents || e is JCDStationNotFound)
+            {
+                // JCDContractNotFoundException : No contract found in the departure or arrival cities
+                // JCDContractsOfArrivalAndDepartureAreDifferents : The cities are in differents contracts
+                // JCDStationNotFound : No station found in the contracts corresponding to the conditions
+                Itinerary res = new Itinerary(ClientOpenStreetMapAPI.GetItineraryByWalking(originLocation, destinationLocation).Result, ClientOpenStreetMapAPI.Walking);
+                res.isException = true;
+                res.exception = e.Message;
+                return res;
+            }
 
-            // need to compute 3 itineraries one with the use of bike
-            // the other just by walking from the origin to detsination
-            // give the one with less time
+            JCDStation stationOrigin = stations[0];
+            JCDStation stationDestination = stations[1];
+
+            GeoCoordinate stationOriginLocation = Util.convertPositionToGeoCoordinate(stationOrigin.position);
+            GeoCoordinate stationDestinationLocation = Util.convertPositionToGeoCoordinate(stationDestination.position);
+
+            OpenRouteServiceDirection walkOnly = ClientOpenStreetMapAPI.GetItineraryByWalking(originLocation, destinationLocation).Result;
+            OpenRouteServiceDirection walkOriginToStation = ClientOpenStreetMapAPI.GetItineraryByWalking(originLocation, stationOriginLocation).Result;
+            if (walkOnly.getDuration() < walkOriginToStation.getDuration())
+            {
+                return Util.calculateItinenary(new List<OpenRouteServiceDirection>() { walkOnly });
+            }
+            
+            OpenRouteServiceDirection bikeStationToStation = ClientOpenStreetMapAPI.GetItineraryByBiking(stationOriginLocation, stationDestinationLocation).Result;
+            if (walkOnly.getDuration() < Util.calculateDuration(new List<OpenRouteServiceDirection> { walkOriginToStation, bikeStationToStation }))
+            {
+                return Util.calculateItinenary(new List<OpenRouteServiceDirection>() { walkOnly });
+            }
+
+            OpenRouteServiceDirection walkStationToDestination = ClientOpenStreetMapAPI.GetItineraryByWalking(stationDestinationLocation, destinationLocation).Result;
+            if (walkOnly.getDuration() < Util.calculateDuration(new List<OpenRouteServiceDirection> { walkOriginToStation, bikeStationToStation, walkStationToDestination }))
+            {
+                return Util.calculateItinenary(new List<OpenRouteServiceDirection>() { walkOnly });
+            }
+
+            return Util.calculateItinenary(new List<OpenRouteServiceDirection> { walkOriginToStation, bikeStationToStation, walkStationToDestination});
         }
     }
 }

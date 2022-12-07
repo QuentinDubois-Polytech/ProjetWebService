@@ -8,19 +8,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ApplicationServer.JCDecauxServiceProxy {
+namespace ApplicationServerConsole.JCDecauxServiceProxy {
     using System.Runtime.Serialization;
     using System;
     
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="JCDContract", Namespace="http://schemas.datacontract.org/2004/07/ProxyCache")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="JCDContract", Namespace="http://schemas.datacontract.org/2004/07/ProxyCacheConsole")]
     [System.SerializableAttribute()]
     public partial class JCDContract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] citiesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string commercial_nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string country_codeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string nameField;
@@ -32,6 +41,45 @@ namespace ApplicationServer.JCDecauxServiceProxy {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] cities {
+            get {
+                return this.citiesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.citiesField, value) != true)) {
+                    this.citiesField = value;
+                    this.RaisePropertyChanged("cities");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string commercial_name {
+            get {
+                return this.commercial_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.commercial_nameField, value) != true)) {
+                    this.commercial_nameField = value;
+                    this.RaisePropertyChanged("commercial_name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string country_code {
+            get {
+                return this.country_codeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.country_codeField, value) != true)) {
+                    this.country_codeField = value;
+                    this.RaisePropertyChanged("country_code");
+                }
             }
         }
         
@@ -60,7 +108,7 @@ namespace ApplicationServer.JCDecauxServiceProxy {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="JCDStation", Namespace="http://schemas.datacontract.org/2004/07/ProxyCache")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="JCDStation", Namespace="http://schemas.datacontract.org/2004/07/ProxyCacheConsole")]
     [System.SerializableAttribute()]
     public partial class JCDStation : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -77,10 +125,10 @@ namespace ApplicationServer.JCDecauxServiceProxy {
         private int numberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ApplicationServer.JCDecauxServiceProxy.Position positionField;
+        private ApplicationServerConsole.JCDecauxServiceProxy.Position positionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ApplicationServer.JCDecauxServiceProxy.Totalstands totalStandsField;
+        private ApplicationServerConsole.JCDecauxServiceProxy.Totalstands totalStandsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -132,7 +180,7 @@ namespace ApplicationServer.JCDecauxServiceProxy {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ApplicationServer.JCDecauxServiceProxy.Position position {
+        public ApplicationServerConsole.JCDecauxServiceProxy.Position position {
             get {
                 return this.positionField;
             }
@@ -145,7 +193,7 @@ namespace ApplicationServer.JCDecauxServiceProxy {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ApplicationServer.JCDecauxServiceProxy.Totalstands totalStands {
+        public ApplicationServerConsole.JCDecauxServiceProxy.Totalstands totalStands {
             get {
                 return this.totalStandsField;
             }
@@ -169,7 +217,7 @@ namespace ApplicationServer.JCDecauxServiceProxy {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Position", Namespace="http://schemas.datacontract.org/2004/07/ProxyCache")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Position", Namespace="http://schemas.datacontract.org/2004/07/ProxyCacheConsole")]
     [System.SerializableAttribute()]
     public partial class Position : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -230,7 +278,7 @@ namespace ApplicationServer.JCDecauxServiceProxy {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Totalstands", Namespace="http://schemas.datacontract.org/2004/07/ProxyCache")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Totalstands", Namespace="http://schemas.datacontract.org/2004/07/ProxyCacheConsole")]
     [System.SerializableAttribute()]
     public partial class Totalstands : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -238,7 +286,7 @@ namespace ApplicationServer.JCDecauxServiceProxy {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ApplicationServer.JCDecauxServiceProxy.Availabilities availabilitiesField;
+        private ApplicationServerConsole.JCDecauxServiceProxy.Availabilities availabilitiesField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -251,7 +299,7 @@ namespace ApplicationServer.JCDecauxServiceProxy {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ApplicationServer.JCDecauxServiceProxy.Availabilities availabilities {
+        public ApplicationServerConsole.JCDecauxServiceProxy.Availabilities availabilities {
             get {
                 return this.availabilitiesField;
             }
@@ -275,7 +323,7 @@ namespace ApplicationServer.JCDecauxServiceProxy {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Availabilities", Namespace="http://schemas.datacontract.org/2004/07/ProxyCache")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Availabilities", Namespace="http://schemas.datacontract.org/2004/07/ProxyCacheConsole")]
     [System.SerializableAttribute()]
     public partial class Availabilities : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -339,31 +387,31 @@ namespace ApplicationServer.JCDecauxServiceProxy {
     public interface IJCDecauxServiceProxy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxServiceProxy/getContractsList", ReplyAction="http://tempuri.org/IJCDecauxServiceProxy/getContractsListResponse")]
-        ApplicationServer.JCDecauxServiceProxy.JCDContract[] getContractsList();
+        ApplicationServerConsole.JCDecauxServiceProxy.JCDContract[] getContractsList();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxServiceProxy/getContractsList", ReplyAction="http://tempuri.org/IJCDecauxServiceProxy/getContractsListResponse")]
-        System.Threading.Tasks.Task<ApplicationServer.JCDecauxServiceProxy.JCDContract[]> getContractsListAsync();
+        System.Threading.Tasks.Task<ApplicationServerConsole.JCDecauxServiceProxy.JCDContract[]> getContractsListAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxServiceProxy/getStationsList", ReplyAction="http://tempuri.org/IJCDecauxServiceProxy/getStationsListResponse")]
-        ApplicationServer.JCDecauxServiceProxy.JCDStation[] getStationsList();
+        ApplicationServerConsole.JCDecauxServiceProxy.JCDStation[] getStationsList();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxServiceProxy/getStationsList", ReplyAction="http://tempuri.org/IJCDecauxServiceProxy/getStationsListResponse")]
-        System.Threading.Tasks.Task<ApplicationServer.JCDecauxServiceProxy.JCDStation[]> getStationsListAsync();
+        System.Threading.Tasks.Task<ApplicationServerConsole.JCDecauxServiceProxy.JCDStation[]> getStationsListAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxServiceProxy/getStationsListWithContractName", ReplyAction="http://tempuri.org/IJCDecauxServiceProxy/getStationsListWithContractNameResponse")]
-        ApplicationServer.JCDecauxServiceProxy.JCDStation[] getStationsListWithContractName(string contractName);
+        ApplicationServerConsole.JCDecauxServiceProxy.JCDStation[] getStationsListWithContractName(string contractName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxServiceProxy/getStationsListWithContractName", ReplyAction="http://tempuri.org/IJCDecauxServiceProxy/getStationsListWithContractNameResponse")]
-        System.Threading.Tasks.Task<ApplicationServer.JCDecauxServiceProxy.JCDStation[]> getStationsListWithContractNameAsync(string contractName);
+        System.Threading.Tasks.Task<ApplicationServerConsole.JCDecauxServiceProxy.JCDStation[]> getStationsListWithContractNameAsync(string contractName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IJCDecauxServiceProxyChannel : ApplicationServer.JCDecauxServiceProxy.IJCDecauxServiceProxy, System.ServiceModel.IClientChannel {
+    public interface IJCDecauxServiceProxyChannel : ApplicationServerConsole.JCDecauxServiceProxy.IJCDecauxServiceProxy, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class JCDecauxServiceProxyClient : System.ServiceModel.ClientBase<ApplicationServer.JCDecauxServiceProxy.IJCDecauxServiceProxy>, ApplicationServer.JCDecauxServiceProxy.IJCDecauxServiceProxy {
+    public partial class JCDecauxServiceProxyClient : System.ServiceModel.ClientBase<ApplicationServerConsole.JCDecauxServiceProxy.IJCDecauxServiceProxy>, ApplicationServerConsole.JCDecauxServiceProxy.IJCDecauxServiceProxy {
         
         public JCDecauxServiceProxyClient() {
         }
@@ -384,27 +432,27 @@ namespace ApplicationServer.JCDecauxServiceProxy {
                 base(binding, remoteAddress) {
         }
         
-        public ApplicationServer.JCDecauxServiceProxy.JCDContract[] getContractsList() {
+        public ApplicationServerConsole.JCDecauxServiceProxy.JCDContract[] getContractsList() {
             return base.Channel.getContractsList();
         }
         
-        public System.Threading.Tasks.Task<ApplicationServer.JCDecauxServiceProxy.JCDContract[]> getContractsListAsync() {
+        public System.Threading.Tasks.Task<ApplicationServerConsole.JCDecauxServiceProxy.JCDContract[]> getContractsListAsync() {
             return base.Channel.getContractsListAsync();
         }
         
-        public ApplicationServer.JCDecauxServiceProxy.JCDStation[] getStationsList() {
+        public ApplicationServerConsole.JCDecauxServiceProxy.JCDStation[] getStationsList() {
             return base.Channel.getStationsList();
         }
         
-        public System.Threading.Tasks.Task<ApplicationServer.JCDecauxServiceProxy.JCDStation[]> getStationsListAsync() {
+        public System.Threading.Tasks.Task<ApplicationServerConsole.JCDecauxServiceProxy.JCDStation[]> getStationsListAsync() {
             return base.Channel.getStationsListAsync();
         }
         
-        public ApplicationServer.JCDecauxServiceProxy.JCDStation[] getStationsListWithContractName(string contractName) {
+        public ApplicationServerConsole.JCDecauxServiceProxy.JCDStation[] getStationsListWithContractName(string contractName) {
             return base.Channel.getStationsListWithContractName(contractName);
         }
         
-        public System.Threading.Tasks.Task<ApplicationServer.JCDecauxServiceProxy.JCDStation[]> getStationsListWithContractNameAsync(string contractName) {
+        public System.Threading.Tasks.Task<ApplicationServerConsole.JCDecauxServiceProxy.JCDStation[]> getStationsListWithContractNameAsync(string contractName) {
             return base.Channel.getStationsListWithContractNameAsync(contractName);
         }
     }

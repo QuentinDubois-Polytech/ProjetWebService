@@ -28,12 +28,12 @@ import jakarta.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Itinerary_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServerConsole", "Itinerary");
-    private final static QName _ArrayOfDirection_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServerConsole", "ArrayOfDirection");
-    private final static QName _Direction_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServerConsole", "Direction");
-    private final static QName _Segment_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServerConsole", "Segment");
-    private final static QName _ArrayOfStep_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServerConsole", "ArrayOfStep");
-    private final static QName _Step_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServerConsole", "Step");
+    private final static QName _Itinerary_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServer", "Itinerary");
+    private final static QName _ArrayOfDirection_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServer", "ArrayOfDirection");
+    private final static QName _Direction_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServer", "Direction");
+    private final static QName _Segment_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServer", "Segment");
+    private final static QName _ArrayOfStep_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServer", "ArrayOfStep");
+    private final static QName _Step_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServer", "Step");
     private final static QName _ArrayOfArrayOffloat_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfArrayOffloat");
     private final static QName _ArrayOffloat_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOffloat");
     private final static QName _ArrayOfint_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfint");
@@ -61,15 +61,15 @@ public class ObjectFactory {
     private final static QName _GetItineraryOrigin_QNAME = new QName("http://tempuri.org/", "origin");
     private final static QName _GetItineraryDestination_QNAME = new QName("http://tempuri.org/", "destination");
     private final static QName _GetItineraryResponseGetItineraryResult_QNAME = new QName("http://tempuri.org/", "GetItineraryResult");
-    private final static QName _StepInstruction_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServerConsole", "instruction");
-    private final static QName _StepName_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServerConsole", "name");
-    private final static QName _StepWayPoints_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServerConsole", "way_points");
-    private final static QName _SegmentSteps_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServerConsole", "steps");
-    private final static QName _DirectionProfile_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServerConsole", "profile");
-    private final static QName _DirectionSegment_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServerConsole", "segment");
-    private final static QName _ItineraryCoordinates_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServerConsole", "coordinates");
-    private final static QName _ItineraryDirections_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServerConsole", "directions");
-    private final static QName _ItineraryException_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServerConsole", "exception");
+    private final static QName _StepInstruction_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServer", "instruction");
+    private final static QName _StepName_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServer", "name");
+    private final static QName _StepWayPoints_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServer", "way_points");
+    private final static QName _SegmentSteps_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServer", "steps");
+    private final static QName _DirectionProfile_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServer", "profile");
+    private final static QName _DirectionSegment_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServer", "segment");
+    private final static QName _ItineraryCoordinates_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServer", "coordinates");
+    private final static QName _ItineraryDirections_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServer", "directions");
+    private final static QName _ItineraryException_QNAME = new QName("http://schemas.datacontract.org/2004/07/ApplicationServer", "exception");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: generated
@@ -174,7 +174,7 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link Itinerary }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServerConsole", name = "Itinerary")
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServer", name = "Itinerary")
     public JAXBElement<Itinerary> createItinerary(Itinerary value) {
         return new JAXBElement<Itinerary>(_Itinerary_QNAME, Itinerary.class, null, value);
     }
@@ -187,7 +187,7 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfDirection }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServerConsole", name = "ArrayOfDirection")
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServer", name = "ArrayOfDirection")
     public JAXBElement<ArrayOfDirection> createArrayOfDirection(ArrayOfDirection value) {
         return new JAXBElement<ArrayOfDirection>(_ArrayOfDirection_QNAME, ArrayOfDirection.class, null, value);
     }
@@ -200,7 +200,7 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link Direction }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServerConsole", name = "Direction")
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServer", name = "Direction")
     public JAXBElement<Direction> createDirection(Direction value) {
         return new JAXBElement<Direction>(_Direction_QNAME, Direction.class, null, value);
     }
@@ -213,7 +213,7 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link Segment }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServerConsole", name = "Segment")
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServer", name = "Segment")
     public JAXBElement<Segment> createSegment(Segment value) {
         return new JAXBElement<Segment>(_Segment_QNAME, Segment.class, null, value);
     }
@@ -226,7 +226,7 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfStep }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServerConsole", name = "ArrayOfStep")
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServer", name = "ArrayOfStep")
     public JAXBElement<ArrayOfStep> createArrayOfStep(ArrayOfStep value) {
         return new JAXBElement<ArrayOfStep>(_ArrayOfStep_QNAME, ArrayOfStep.class, null, value);
     }
@@ -239,7 +239,7 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link Step }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServerConsole", name = "Step")
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServer", name = "Step")
     public JAXBElement<Step> createStep(Step value) {
         return new JAXBElement<Step>(_Step_QNAME, Step.class, null, value);
     }
@@ -603,7 +603,7 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link String }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServerConsole", name = "instruction", scope = Step.class)
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServer", name = "instruction", scope = Step.class)
     public JAXBElement<String> createStepInstruction(String value) {
         return new JAXBElement<String>(_StepInstruction_QNAME, String.class, Step.class, value);
     }
@@ -616,7 +616,7 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link String }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServerConsole", name = "name", scope = Step.class)
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServer", name = "name", scope = Step.class)
     public JAXBElement<String> createStepName(String value) {
         return new JAXBElement<String>(_StepName_QNAME, String.class, Step.class, value);
     }
@@ -629,7 +629,7 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfint }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServerConsole", name = "way_points", scope = Step.class)
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServer", name = "way_points", scope = Step.class)
     public JAXBElement<ArrayOfint> createStepWayPoints(ArrayOfint value) {
         return new JAXBElement<ArrayOfint>(_StepWayPoints_QNAME, ArrayOfint.class, Step.class, value);
     }
@@ -642,7 +642,7 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfStep }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServerConsole", name = "steps", scope = Segment.class)
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServer", name = "steps", scope = Segment.class)
     public JAXBElement<ArrayOfStep> createSegmentSteps(ArrayOfStep value) {
         return new JAXBElement<ArrayOfStep>(_SegmentSteps_QNAME, ArrayOfStep.class, Segment.class, value);
     }
@@ -655,7 +655,7 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link String }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServerConsole", name = "profile", scope = Direction.class)
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServer", name = "profile", scope = Direction.class)
     public JAXBElement<String> createDirectionProfile(String value) {
         return new JAXBElement<String>(_DirectionProfile_QNAME, String.class, Direction.class, value);
     }
@@ -668,7 +668,7 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link Segment }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServerConsole", name = "segment", scope = Direction.class)
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServer", name = "segment", scope = Direction.class)
     public JAXBElement<Segment> createDirectionSegment(Segment value) {
         return new JAXBElement<Segment>(_DirectionSegment_QNAME, Segment.class, Direction.class, value);
     }
@@ -681,7 +681,7 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfArrayOffloat }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServerConsole", name = "coordinates", scope = Itinerary.class)
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServer", name = "coordinates", scope = Itinerary.class)
     public JAXBElement<ArrayOfArrayOffloat> createItineraryCoordinates(ArrayOfArrayOffloat value) {
         return new JAXBElement<ArrayOfArrayOffloat>(_ItineraryCoordinates_QNAME, ArrayOfArrayOffloat.class, Itinerary.class, value);
     }
@@ -694,7 +694,7 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfDirection }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServerConsole", name = "directions", scope = Itinerary.class)
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServer", name = "directions", scope = Itinerary.class)
     public JAXBElement<ArrayOfDirection> createItineraryDirections(ArrayOfDirection value) {
         return new JAXBElement<ArrayOfDirection>(_ItineraryDirections_QNAME, ArrayOfDirection.class, Itinerary.class, value);
     }
@@ -707,7 +707,7 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link String }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServerConsole", name = "exception", scope = Itinerary.class)
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/ApplicationServer", name = "exception", scope = Itinerary.class)
     public JAXBElement<String> createItineraryException(String value) {
         return new JAXBElement<String>(_ItineraryException_QNAME, String.class, Itinerary.class, value);
     }

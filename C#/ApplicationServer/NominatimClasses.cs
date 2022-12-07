@@ -1,10 +1,5 @@
-﻿using ApplicationServer.JCDecauxServiceProxy;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using System.Device.Location;
 
 namespace ApplicationServer
 {
@@ -28,13 +23,9 @@ namespace ApplicationServer
         public float importance { get; set; }
         public Address address { get; set; }
         public string svg { get; set; }
-        public Position GetPosition()
+        public GeoCoordinate GetGeoCoordinate()
         {
-            // A changer par le constructeur de Position
-            Position res = new Position();
-            res.latitude = Double.Parse(lat, System.Globalization.CultureInfo.InvariantCulture);
-            res.longitude = Double.Parse(lon, System.Globalization.CultureInfo.InvariantCulture);
-            return res;
+            return new GeoCoordinate(Double.Parse(lat, System.Globalization.CultureInfo.InvariantCulture), Double.Parse(lon, System.Globalization.CultureInfo.InvariantCulture));
         }
     }
 

@@ -8,15 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApplicationServerConsole
+namespace ApplicationServer
 {
     public class Util
     {
-        public static Itinerary calculateItinenary(List<OpenRouteServiceDirection> oSMObjects)
+        public static Itinerary calculateItinenary(List<OpenRouteServiceDirection> openRouteServiceDirection)
         {
             Itinerary itinerary = new Itinerary();
-            Segment segment = new Segment();
-            foreach (OpenRouteServiceDirection obj in oSMObjects)
+            foreach (OpenRouteServiceDirection obj in openRouteServiceDirection)
             {
                 Segment seg = obj.features[0].properties.segments[0];
                 string profile = obj.metadata.query.profile;

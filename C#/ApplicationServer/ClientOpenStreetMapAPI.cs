@@ -5,24 +5,34 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
-using System.Text.Json.Serialization;
-using ApplicationServer.JCDecauxServiceProxy;
-using System.Runtime.ConstrainedExecution;
+using System.Globalization;
+using System.Device.Location;
+using System.Net.Http.Headers;
 
 namespace ApplicationServer
 {
     public class ClientOpenStreetMapAPI
     {
-        private readonly HttpClient client;
+        private static readonly HttpClient client;
+        public static readonly string Biking = "cycling-regular";
+        public static readonly string Walking = "foot-walking";
         private static readonly string API_KEY = "5b3ce3597851110001cf6248533c8f297d74424baa814af18ec650eb";
+        private static readonly string API_URL = "https://api.openrouteservice.org/";
+        private static string DefaultLanguage = "fr";
 
-        public ClientOpenStreetMapAPI()
+        static ClientOpenStreetMapAPI()
         {
             client = new HttpClient();
-            client.DefaultRequestHeaders.Add("User-Agent", "BikeApplication");
+            client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("MyBikeApplication", "1.0"));
+            client.DefaultRequestHeaders.AcceptLanguage.Add(new StringWithQualityHeaderValue(DefaultLanguage));
+
+            // Permet de remettre la représentation textuelle des objets par défaut (notamment les double)
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
         }
 
-        public async Task<Position> GetLocation(string address)
+        // Using the Nominatim API (not used anymore)
+        public static async Task<GeoCoordinate> GetLocation(string address)
         {
             string url = "https://nominatim.openstreetmap.org/search/" + address;
             string query = "format=json&addressdetails=1&limit=1&polygon_svg=1";
@@ -30,35 +40,53 @@ namespace ApplicationServer
             response.EnsureSuccessStatusCode();
             string responseData = await response.Content.ReadAsStringAsync();
             OSMObject osmObject = JsonSerializer.Deserialize<List<OSMObject>>(responseData).First();
-            return osmObject.GetPosition();
+            return osmObject.GetGeoCoordinate();
 
         }
 
-        public async Task<Itinerary> GetItinerary(string start, string end, Boolean bicycle)
+        // Using the OpenRouteService API
+        public static async Task<OpenRouteServiceSearch> GetCoordonates(string address)
         {
-            Task<Position> startingPosition = GetLocation(start);
-            Task<Position> endPosition = GetLocation(end);
-            startingPosition.Wait();
-            endPosition.Wait();
-            return await GetItinerary(start, end, bicycle);
+            string url = API_URL + "geocode/search/";
+            string query = "&text=" + address + "&size=1";
+            string responseData = await APIGetCall(url, query);
+            return JsonSerializer.Deserialize<OpenRouteServiceSearch>(responseData);
         }
 
+        public static async Task<OpenRouteServiceDirection> GetItineraryByWalking(GeoCoordinate start, GeoCoordinate end) {
+            return await GetItinerary(start, end, ClientOpenStreetMapAPI.Walking);
+        }
 
-        public async Task<Itinerary> GetItinerary(Position start, Position end, Boolean bicycle)
+        public static async Task<OpenRouteServiceDirection> GetItineraryByBiking(GeoCoordinate start, GeoCoordinate end)
+        {
+            return await GetItinerary(start, end, ClientOpenStreetMapAPI.Biking);
+        }
+
+        public static async Task<OpenRouteServiceDirection> GetItinerary(GeoCoordinate start, GeoCoordinate end, string profile)
         {
             // OpenRouteService inverse l'ordre habituelle de la représentation d'une coordonnée (latitude, longitude)
-            // A la place il utilise (longitude, latitude)
-            // (bicycle ? "cycling-regular" : "foot-walking")
-            string url = "https://api.openrouteservice.org/v2/directions/" + "driving-car" + "?api_key=" + API_KEY;
-            string query = "&start=" + start.longitude + "," + start.latitude + "&end=" +end.longitude + "," + end.latitude; //"&size=1"
-            HttpResponseMessage response = await client.GetAsync(url + query);
+            string url = API_URL + "v2/directions/" + profile + "/";
+            string query = "&start=" + start.Longitude.ToString() + "," + start.Latitude.ToString() +
+                "&end=" + end.Longitude.ToString() + "," + end.Latitude.ToString() + "&size=1";
+            string responseData = await APIGetCall(url, query);
+            return JsonSerializer.Deserialize<OpenRouteServiceDirection>(responseData);
+        }
+
+        private static async Task<string> APIPostCall(string url, string content)
+        {
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, new Uri(url));
+            request.Headers.Authorization = new AuthenticationHeaderValue(API_KEY);
+            request.Content = new StringContent(content, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
-            string responseData = await response.Content.ReadAsStringAsync();
-            
-            OpenRouteDirection openRouteDirection = JsonSerializer.Deserialize<OpenRouteDirection>(responseData);
-            return new Itinerary(openRouteDirection.features.First().properties.segments[0].steps.ToList());
-
-
+            return await response.Content.ReadAsStringAsync();
+        }
+        
+        private static async Task<string> APIGetCall(string url, string query)
+        {
+            HttpResponseMessage response = await client.GetAsync(new Uri(url + "?" + query + "&api_key=" + API_KEY));
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
         }
     }
 }
