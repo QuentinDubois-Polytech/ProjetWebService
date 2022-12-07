@@ -74,5 +74,7 @@ public class RoutePainter implements Painter<JXMapViewer> {
             lastY = (int) pt.getY();
         }
     }
+
+    public void setColor(Color c){color = c;}
 }
 
