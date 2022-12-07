@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{FAE7A2AA-224E-451A-9390-EB2B634E6B20}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ProcyCacheConsole</RootNamespace>
-    <AssemblyName>ProcyCacheConsole</AssemblyName>
+    <RootNamespace>ProxyCache</RootNamespace>
+    <AssemblyName>ProxyCache</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

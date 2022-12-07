@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{77B54773-0EF9-4574-A8B5-4546DBBD8BF0}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ApplicationServerConsole</RootNamespace>
-    <AssemblyName>ApplicationServerConsole</AssemblyName>
+    <RootNamespace>ApplicationServer</RootNamespace>
+    <AssemblyName>ApplicationServer</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
