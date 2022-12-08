@@ -18,22 +18,6 @@
 # Mono auto generated files
 mono_crash.*
 
-# Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
-[Ww][Ii][Nn]32/
-[Aa][Rr][Mm]/
-[Aa][Rr][Mm]64/
-bld/
-[Bb]in/
-[Oo]bj/
-[Oo]ut/
-[Ll]og/
-[Ll]ogs/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -43,9 +27,6 @@ bld/
 # Visual Studio 2017 auto generated files
 Generated\ Files/
 
-# MSTest test Results
-[Tt]est[Rr]esult*/
-[Bb]uild[Ll]og.*
 
 # NUnit
 *.VisualState.xml
@@ -474,3 +455,10 @@ fabric.properties
 /Java/ClientBikeApplication/target/jaxws/stale
 /Java/ClientBikeApplication/src/main/java/fr/unice/polytech/BikeProject/Test.java
 /Java/ClientBikeApplication/ClientBikeApplication.iml
+Java/ClientBikeApplication/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+Java/ClientBikeApplication/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+.idea/vcs.xml
+.idea/ProjetWebService.iml
+.idea/modules.xml
+.idea/misc.xml
+.idea/inspectionProfiles/profiles_settings.xml
