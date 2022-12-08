@@ -51,5 +51,5 @@ ou totalement de marche à pied en fonction de certaines conditions.
 ### Remerciements
 
 Nous tenions à remercier Florian Latapie qui nous a fourni les scripts bat et aidé pour la configuration du
-pom.xml du projet java. Vous pouvez retrouver son [Github](https://github.com/FlorianLatapie) si cela vous 
+pom.xml du projet Java. Vous pouvez retrouver son [Github](https://github.com/FlorianLatapie) si cela vous 
 intéresse.
