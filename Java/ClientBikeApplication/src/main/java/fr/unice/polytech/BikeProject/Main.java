@@ -6,15 +6,28 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         boolean keepAsking = true;
-        String origin;
-        String destination;
+        String origin = null;
+        String destination = null;
 
         do {
             Scanner sc = new Scanner(System.in);
-            System.out.println("Rentrez l'adresse de votre point de départ : ");
-            origin = sc.nextLine();
-            System.out.println("Rentrez l'adresse de votre point d'arrivée : ");
-            destination = sc.nextLine();
+            while (origin == null || origin.trim().isEmpty()) {
+                System.out.println("Enter the address of your starting point: ");
+                origin = sc.nextLine();
+
+                if (origin.trim().isEmpty()) {
+                    System.out.println("You need to enter an address");
+                }
+            }
+
+            while (destination == null || destination.trim().isEmpty()) {
+                System.out.println("Enter the address of your arrival point: ");
+                destination = sc.nextLine();
+
+                if (destination.trim().isEmpty()) {
+                    System.out.println("You need to enter an address");
+                }
+            }
 
             origin = origin.toLowerCase().trim();
             destination = destination.toLowerCase().trim();
@@ -23,7 +36,9 @@ public class Main {
                 keepAsking= false;
                 System.out.println();
             } else {
-                System.out.println("Le point de départ et d'arrivée doivent être différents");
+                System.out.println("The starting and ending points must be different");
+                origin = null;
+                destination = null;
             }
         } while(keepAsking);
 
